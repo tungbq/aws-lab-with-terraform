@@ -30,10 +30,10 @@ resource "aws_iam_role" "lamda_apigateway_role" {
           "dynamodb:UpdateItem"
         ],
         Effect = "Allow",
-        Resource = "*"
+        Resource = ["*"]
       },
       {
-        Resource = "*",
+        Resource = ["*"],
         Action = [
           "logs:CreateLogGroup",
           "logs:CreateLogStream",
