@@ -90,3 +90,22 @@ resource "aws_lambda_function" "demo_http_lambda" {
     }
   }
 }
+
+# Create DynamoDB table
+resource "aws_dynamodb_table" "basic-dynamodb-table" {
+  name           = "demo_dynamo_db_table"
+  hash_key       = "id"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 5
+  write_capacity = 5
+
+  attribute {
+    name = "id"
+    type = "S"
+  }
+
+  tags = {
+    Name        = "dynamodb-table-1"
+    Environment = "production"
+  }
+}
