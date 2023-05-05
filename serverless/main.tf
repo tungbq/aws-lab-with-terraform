@@ -109,3 +109,5 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
     Environment = "production"
   }
 }
+
+# Deploy API Gateway
