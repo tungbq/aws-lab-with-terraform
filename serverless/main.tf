@@ -73,11 +73,11 @@ data "archive_file" "lambda" {
   output_path = "lambda_http_payload.zip"
 }
 
-resource "aws_lambda_function" "test_lambda" {
+resource "aws_lambda_function" "demo_http_lambda" {
   # If the file is not in the current working directory you will need to include a
   # path.module in the filename.
   filename      = "lambda_http_payload.zip"
-  function_name = "lambda_function_name"
+  function_name = "demo_http_lambda"
   role          = aws_iam_role.lamda_apigateway_role.arn
 
   source_code_hash = data.archive_file.lambda.output_base64sha256
