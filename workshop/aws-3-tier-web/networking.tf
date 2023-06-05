@@ -73,7 +73,7 @@ resource "aws_subnet" "private_db_subnet_1a" {
   }
 }
 
-resource "aws_subnet" "private_db_subnet_1a" {
+resource "aws_subnet" "private_db_subnet_1b" {
   vpc_id                  = aws_vpc.workshop_aws_3_tier_vpc.id
   cidr_block              = "10.0.6.0/24"
   availability_zone       = "us-east-1b" # Replace with your desired availability zone
