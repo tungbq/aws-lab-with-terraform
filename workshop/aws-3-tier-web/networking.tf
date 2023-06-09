@@ -83,7 +83,7 @@ resource "aws_subnet" "private_db_subnet_1b" {
 
 
 # part01/internetconnectivity
-resource "aws_internet_gateway" "3tier-igw" {
+resource "aws_internet_gateway" "three_tier_igw" {
   vpc_id = aws_vpc.workshop_aws_3_tier_vpc.id
 
   tags = {
@@ -92,3 +92,14 @@ resource "aws_internet_gateway" "3tier-igw" {
 }
 
 # NAT GW (on public)
+resource "aws_nat_gateway" "public_web_subnet_1a_nat" {
+  subnet_id     = aws_subnet.public_web_subnet_1a.id
+
+  tags = {
+    Name = "gw NAT AZ 1A"
+  }
+
+  # To ensure proper ordering, it is recommended to add an explicit dependency
+  # on the Internet Gateway for the VPC.
+  depends_on = [aws_internet_gateway.three_tier_igw]
+}
