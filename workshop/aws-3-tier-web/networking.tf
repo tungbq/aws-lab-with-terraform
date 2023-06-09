@@ -255,3 +255,17 @@ resource "aws_security_group" "app_tier_sg" {
     security_group_id =  ["${aws_security_group.internal_lb_sg.id}"]# TODO: update the private IP from your Machine (without leak)
   }
 }
+
+## 5. For our private instances (Allow interal LB)
+resource "aws_security_group" "db_tier_sg" {
+  description = "Allow SQL server inbound traffic"
+  vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
+
+  ingress {
+    description      = "MYSQL/Aurora port (3306) from db_tier_sg"
+    from_port        = 3306
+    to_port          = 3306
+    protocol         = "tcp"
+    security_group_id =  ["${aws_security_group.app_tier_sg.id}"]# TODO: update the private IP from your Machine (without leak)
+  }
+}
