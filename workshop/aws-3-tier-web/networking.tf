@@ -96,7 +96,7 @@ resource "aws_internet_gateway" "three_tier_igw" {
 # NAT GW (on public)
 ## Eastic IP first:
 resource "aws_eip" "nat_gateway_eip_1a" {
-  vpc = true
+  domain = "vpc"
 }
 
 resource "aws_nat_gateway" "public_web_subnet_1a_nat" {
