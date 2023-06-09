@@ -199,3 +199,17 @@ resource "aws_route_table_association" "rt_to_private_web_subnet_1b" {
   route_table_id = aws_route_table.private_rt_az_1b.id
 }
 
+## Security Group
+## 1. Public/ Internet facing SG
+resource "aws_security_group" "internet_facing_lb_sg" {
+  description = "Allow HTTP inbound traffic"
+  vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
+
+  ingress {
+    description      = "HTTP from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]# TODO: update the IP
+  }
+}
