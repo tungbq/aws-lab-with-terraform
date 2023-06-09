@@ -185,7 +185,7 @@ resource "aws_route_table" "private_rt_az_1b" {
   # Allowing public IP to comunicate with NAT Gateway
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.public_web_subnet_1b_nat
+    gateway_id = aws_nat_gateway.public_web_subnet_1b_nat.id
   }
 
   tags = {
