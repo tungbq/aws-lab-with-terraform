@@ -1,8 +1,4 @@
-
-provider "aws" {
-  region = "us-east-1" # Replace with your desired region
-}
-
+##### VPC creation
 resource "aws_vpc" "workshop_aws_3_tier_vpc" {
   cidr_block = "10.0.0.0/16"
 }
@@ -84,3 +80,15 @@ resource "aws_subnet" "private_db_subnet_1b" {
     Name = "Private-DB-Subnet-AZ-1B"
   }
 }
+
+
+# part01/internetconnectivity
+resource "aws_internet_gateway" "3tier-igw" {
+  vpc_id = aws_vpc.workshop_aws_3_tier_vpc.id
+
+  tags = {
+    Name = "3tier IGW"
+  }
+}
+
+# NAT GW (on public)
