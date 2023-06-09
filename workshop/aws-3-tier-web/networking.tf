@@ -173,7 +173,7 @@ resource "aws_route_table" "private_rt_az_1a" {
 }
 
 # association pub subnet 1A 1B
-resource "aws_route_table_association" "rt_to_public_web_subnet_1a" {
+resource "aws_route_table_association" "rt_to_private_web_subnet_1a" {
   subnet_id      = aws_subnet.private_app_subnet_1a.id
   route_table_id = aws_route_table.private_rt_az_1a.id
 }
@@ -194,7 +194,7 @@ resource "aws_route_table" "private_rt_az_1b" {
 }
 
 # association pub subnet 1A 1B
-resource "aws_route_table_association" "rt_to_public_web_subnet_1b" {
+resource "aws_route_table_association" "rt_to_private_web_subnet_1b" {
   subnet_id      = aws_subnet.private_app_subnet_1b.id
   route_table_id = aws_route_table.private_rt_az_1b.id
 }
