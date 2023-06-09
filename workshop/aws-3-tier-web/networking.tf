@@ -154,3 +154,27 @@ resource "aws_route_table_association" "rt_to_public_web_subnet_1b" {
   subnet_id      = aws_subnet.public_web_subnet_1b.id
   route_table_id = aws_route_table.public_web_rt.id
 }
+
+
+# private
+## private 1A
+resource "aws_route_table" "private_rt_az_1a" {
+  vpc_id = aws_vpc.workshop_aws_3_tier_vpc.id
+
+  # Allowing public IP to comunicate with NAT Gateway
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_nat_gateway.public_web_subnet_1a_nat.id
+  }
+
+  tags = {
+    Name = "private_rt_az_1a"
+  }
+}
+
+# association pub subnet 1A 1B
+resource "aws_route_table_association" "rt_to_public_web_subnet_1a" {
+  subnet_id      = aws_subnet.private_app_subnet_1a.id
+  route_table_id = aws_route_table.private_rt_az_1a.id
+}
+
