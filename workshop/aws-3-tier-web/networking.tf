@@ -229,15 +229,29 @@ resource "aws_security_group" "web_tier_sg" {
 }
 
 ## 3. (Internal Load Balancer) From your web tier instances to hit your Internal Load Balancer
-resource "aws_security_group" "web_tier_sg" {
+resource "aws_security_group" "internal_lb_sg" {
   description = "Allow HTTP inbound traffic"
   vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
 
   ingress {
-    description      = "HTTP from web_tier_sg"
+    description      = "HTTP from internal_lb_sg"
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    security_group_id =  ["${aws_security_group.web_tier_sg.id}"]# TODO: update the IP
+    security_group_id =  ["${aws_security_group.internal_lb_sg.id}"]
+  }
+}
+
+## 4. For our private instances (Allow interal LB)
+resource "aws_security_group" "app_tier_sg" {
+  description = "Allow HTTP inbound traffic"
+  vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
+
+  ingress {
+    description      = "HTTP from app_tier_sg"
+    from_port        = 4000
+    to_port          = 4000
+    protocol         = "tcp"
+    security_group_id =  ["${aws_security_group.internal_lb_sg.id}"]# TODO: update the private IP from your Machine (without leak)
   }
 }
