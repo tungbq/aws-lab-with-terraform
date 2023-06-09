@@ -100,8 +100,8 @@ resource "aws_eip" "nat_gateway_eip_1a" {
 }
 
 resource "aws_nat_gateway" "public_web_subnet_1a_nat" {
-  subnet_id     = aws_subnet.nat_gateway_eip_1a.id
-  allocation_id = aws_eip.nat_gateway_eip.id
+  subnet_id     = aws_subnet.public_web_subnet_1a.id
+  allocation_id = aws_eip.nat_gateway_eip_1a.id
 
   tags = {
     Name = "gw NAT AZ 1A"
