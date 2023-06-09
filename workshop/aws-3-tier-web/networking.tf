@@ -266,6 +266,5 @@ resource "aws_security_group" "db_tier_sg" {
     from_port        = 3306
     to_port          = 3306
     protocol         = "tcp"
-    security_group_id =  ["${aws_security_group.app_tier_sg.id}"]# TODO: update the private IP from your Machine (without leak)
-  }
+    security_group_id =  ["${aws_security_group.app_tier_sg.id}"]
 }
