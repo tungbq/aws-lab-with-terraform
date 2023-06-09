@@ -213,3 +213,17 @@ resource "aws_security_group" "internet_facing_lb_sg" {
     cidr_blocks      = ["0.0.0.0/0"]# TODO: update the IP
   }
 }
+
+## 2. Public instances in Web tier
+resource "aws_security_group" "web_tier_sg" {
+  description = "Allow HTTP inbound traffic"
+  vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
+
+  ingress {
+    description      = "HTTP from VPC"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    security_group_id =  ["${aws_security_group.internet_facing_lb_sg.id}"]# TODO: update the IP
+  }
+}
