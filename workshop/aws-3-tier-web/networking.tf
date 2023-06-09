@@ -220,10 +220,24 @@ resource "aws_security_group" "web_tier_sg" {
   vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
 
   ingress {
-    description      = "HTTP from VPC"
+    description      = "HTTP from internet_facing_lb_sg"
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
     security_group_id =  ["${aws_security_group.internet_facing_lb_sg.id}"]# TODO: update the IP
+  }
+}
+
+## 3. (Internal Load Balancer) From your web tier instances to hit your Internal Load Balancer
+resource "aws_security_group" "web_tier_sg" {
+  description = "Allow HTTP inbound traffic"
+  vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
+
+  ingress {
+    description      = "HTTP from web_tier_sg"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    security_group_id =  ["${aws_security_group.web_tier_sg.id}"]# TODO: update the IP
   }
 }
