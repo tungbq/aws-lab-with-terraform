@@ -117,7 +117,7 @@ resource "aws_eip" "nat_gateway_eip_1b" {
   domain = "vpc"
 }
 resource "aws_nat_gateway" "public_web_subnet_1b_nat" {
-  subnet_id     = aws_subnet.nat_gateway_eip_1b.id
+  subnet_id     = aws_subnet.public_web_subnet_1b.id
   allocation_id = aws_eip.nat_gateway_eip_1b.id
 
   tags = {
