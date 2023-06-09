@@ -94,17 +94,34 @@ resource "aws_internet_gateway" "three_tier_igw" {
 
 
 # NAT GW (on public)
-## Eastic IP first:
+# NAT GW on AZ 1A
+## Eastic IP first
 resource "aws_eip" "nat_gateway_eip_1a" {
   domain = "vpc"
 }
-
 resource "aws_nat_gateway" "public_web_subnet_1a_nat" {
   subnet_id     = aws_subnet.public_web_subnet_1a.id
   allocation_id = aws_eip.nat_gateway_eip_1a.id
 
   tags = {
-    Name = "gw NAT AZ 1A"
+    Name = "NAT Gateway AZ 1A"
+  }
+  # To ensure proper ordering, it is recommended to add an explicit dependency
+  # on the Internet Gateway for the VPC.
+  depends_on = [aws_internet_gateway.three_tier_igw]
+}
+
+# NAT GW on AZ 1B
+## Eastic IP first
+resource "aws_eip" "nat_gateway_eip_1b" {
+  domain = "vpc"
+}
+resource "aws_nat_gateway" "public_web_subnet_1b_nat" {
+  subnet_id     = aws_subnet.nat_gateway_eip_1b.id
+  allocation_id = aws_eip.nat_gateway_eip_1b.id
+
+  tags = {
+    Name = "NAT Gateway AZ 1B"
   }
   # To ensure proper ordering, it is recommended to add an explicit dependency
   # on the Internet Gateway for the VPC.
