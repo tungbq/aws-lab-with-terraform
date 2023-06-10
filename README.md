@@ -1,6 +1,6 @@
 # aws-lab-with-terraform
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ---
@@ -25,6 +25,7 @@ See: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Harshal662"><img src="https://avatars.githubusercontent.com/u/79760384?v=4?s=100" width="100px;" alt="Harshal Abak"/><br /><sub><b>Harshal Abak</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=Harshal662" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://www.linkedin.com/in/ericethridge"><img src="https://avatars.githubusercontent.com/u/22569319?v=4?s=100" width="100px;" alt="Eric E."/><br /><sub><b>Eric E.</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=Intelrunner" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/blacklovertech"><img src="https://avatars.githubusercontent.com/u/93751501?v=4?s=100" width="100px;" alt="Janarthanan"/><br /><sub><b>Janarthanan</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=blacklovertech" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Abraham12611"><img src="https://avatars.githubusercontent.com/u/113689862?v=4?s=100" width="100px;" alt="Abraham Dahunsi"/><br /><sub><b>Abraham Dahunsi</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=Abraham12611" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
