@@ -51,6 +51,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Devazc",
+      "name": "Deva Chandragiri",
+      "avatar_url": "https://avatars.githubusercontent.com/u/122866331?v=4",
+      "profile": "http://devazc.netlify.app",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
