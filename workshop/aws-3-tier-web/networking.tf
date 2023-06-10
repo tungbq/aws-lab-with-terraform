@@ -204,7 +204,6 @@ resource "aws_route_table_association" "rt_to_private_web_subnet_1b" {
 data "http" "myip" {
   url = "https://ipv4.icanhazip.com"
 }
-
 ## 1. Public/ Internet facing SG
 ### Public IP (PC) -> internet_facing_lb_sg
 resource "aws_security_group" "internet_facing_lb_sg" {
@@ -265,7 +264,15 @@ resource "aws_security_group" "app_tier_sg" {
     from_port        = 4000
     to_port          = 4000
     protocol         = "tcp"
-    security_groups =  ["${aws_security_group.internal_lb_sg.id}", "${chomp(data.http.myip.body)}/32"]
+    security_groups =  ["${aws_security_group.internal_lb_sg.id}"]
+  }
+
+  ingress {
+    description      = "Allow port 4000 from app_tier_sg"
+    from_port        = 4000
+    to_port          = 4000
+    protocol         = "tcp"
+    cidr_blocks      = ["${chomp(data.http.myip.body)}/32"]
   }
 }
 
