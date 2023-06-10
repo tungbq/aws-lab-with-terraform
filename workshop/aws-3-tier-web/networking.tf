@@ -272,4 +272,5 @@ resource "aws_security_group" "db_tier_sg" {
     to_port          = 3306
     protocol         = "tcp"
     security_group_id =  ["${aws_security_group.app_tier_sg.id}"]
+  }
 }
