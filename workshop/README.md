@@ -11,3 +11,5 @@
 | aws-three-tier-app | [aws-three-tier-app](./aws-3-tier-web/)|
 | To be added... | To be added... |
 
+## Wanna request more content?
+- Please open an issue to add it to our wishlist: [WISHLIST.md](https://github.com/tungbq/aws-lab-with-terraform/blob/main/workshop/WISHLIST.md)
