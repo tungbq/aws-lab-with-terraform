@@ -6,4 +6,9 @@ resource "aws_db_subnet_group" "three_tier_db_subnet_group" {
     Name = "My DB subnet group"
   }
 }
+
 # DB
+## TODO: follow: 
+# - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster
+# - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
+
