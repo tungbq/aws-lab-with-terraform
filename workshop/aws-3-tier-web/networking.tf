@@ -216,7 +216,7 @@ resource "aws_security_group" "internet_facing_lb_sg" {
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    cidr_blocks      = ["${chomp(data.http.myip.body)}/32"]
+    cidr_blocks      = ["${chomp(data.http.myip.response_body)}/32"]
   }
 }
 
@@ -272,7 +272,7 @@ resource "aws_security_group" "app_tier_sg" {
     from_port        = 4000
     to_port          = 4000
     protocol         = "tcp"
-    cidr_blocks      = ["${chomp(data.http.myip.body)}/32"]
+    cidr_blocks      = ["${chomp(data.http.myip.response_body)}/32"]
   }
 }
 
