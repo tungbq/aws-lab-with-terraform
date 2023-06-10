@@ -201,6 +201,7 @@ resource "aws_route_table_association" "rt_to_private_web_subnet_1b" {
 
 ## Security Group
 ## 1. Public/ Internet facing SG
+### Public IP (PC) -> internet_facing_lb_sg
 resource "aws_security_group" "internet_facing_lb_sg" {
   description = "Allow HTTP inbound traffic"
   vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
@@ -210,11 +211,12 @@ resource "aws_security_group" "internet_facing_lb_sg" {
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]# TODO: update the IP
+    cidr_blocks      = ["0.0.0.0/0"]# TODO: update the IP of my PC
   }
 }
 
 ## 2. Public instances in Web tier
+### internet_facing_lb_sg -> web_tier_sg
 resource "aws_security_group" "web_tier_sg" {
   description = "Allow HTTP inbound traffic"
   vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
@@ -224,11 +226,12 @@ resource "aws_security_group" "web_tier_sg" {
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    security_group_id =  ["${aws_security_group.internet_facing_lb_sg.id}"]# TODO: update the IP
+    security_group_id =  ["${aws_security_group.internet_facing_lb_sg.id}"]
   }
 }
 
 ## 3. (Internal Load Balancer) From your web tier instances to hit your Internal Load Balancer
+### web_tier_sg -> internal_lb_sg
 resource "aws_security_group" "internal_lb_sg" {
   description = "Allow HTTP inbound traffic"
   vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
@@ -238,11 +241,12 @@ resource "aws_security_group" "internal_lb_sg" {
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    security_group_id =  ["${aws_security_group.internal_lb_sg.id}"]
+    security_group_id =  ["${aws_security_group.web_tier_sg.id}"]
   }
 }
 
 ## 4. For our private instances (Allow interal LB)
+### internal_lb_sg -> app_tier_sg
 resource "aws_security_group" "app_tier_sg" {
   description = "Allow HTTP inbound traffic"
   vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
@@ -252,11 +256,12 @@ resource "aws_security_group" "app_tier_sg" {
     from_port        = 4000
     to_port          = 4000
     protocol         = "tcp"
-    security_group_id =  ["${aws_security_group.internal_lb_sg.id}"]# TODO: update the private IP from your Machine (without leak)
+    security_group_id =  ["${aws_security_group.internal_lb_sg.id}"]# TODO: add the private IP from your Machine (without leak)
   }
 }
 
 ## 5. For our private instances (Allow interal LB)
+### app_tier_sg -> db_tier_sg
 resource "aws_security_group" "db_tier_sg" {
   description = "Allow SQL server inbound traffic"
   vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
