@@ -256,7 +256,7 @@ resource "aws_security_group" "app_tier_sg" {
   vpc_id      = aws_vpc.workshop_aws_3_tier_vpc.id
 
   ingress {
-    description      = "HTTP from app_tier_sg"
+    description      = "Allow port 4000 from app_tier_sg"
     from_port        = 4000
     to_port          = 4000
     protocol         = "tcp"
