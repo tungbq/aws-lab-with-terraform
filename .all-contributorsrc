@@ -60,6 +60,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "vedangit",
+      "name": "Vedangi Thokal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/117835144?v=4",
+      "profile": "https://vedangithokal.hashnode.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
