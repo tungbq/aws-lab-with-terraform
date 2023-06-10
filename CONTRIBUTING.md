@@ -56,7 +56,7 @@ To contribute a change proposal, use the following workflow:
 
     ```
 
-    3. Create a PR on the devops-basic repository. There should be a PR template to help you do so.
+    3. Create a PR on the aws-lab-with-terraform repository. There should be a PR template to help you do so.
 
     4. Wait for your changes to be reviewed. If you are a maintainer, you can assign your PR to one or more reviewers. If you aren't a maintainer, one of the maintainers will assign a reviewer.
 
