@@ -200,6 +200,11 @@ resource "aws_route_table_association" "rt_to_private_web_subnet_1b" {
 }
 
 ## Security Group
+# Getting my public IP
+data "http" "myip" {
+  url = "https://ipv4.icanhazip.com"
+}
+
 ## 1. Public/ Internet facing SG
 ### Public IP (PC) -> internet_facing_lb_sg
 resource "aws_security_group" "internet_facing_lb_sg" {
@@ -212,7 +217,7 @@ resource "aws_security_group" "internet_facing_lb_sg" {
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]# TODO: update the IP of my PC
+    cidr_blocks      = ["${chomp(data.http.myip.body)}/32"]
   }
 }
 
@@ -260,7 +265,7 @@ resource "aws_security_group" "app_tier_sg" {
     from_port        = 4000
     to_port          = 4000
     protocol         = "tcp"
-    security_groups =  ["${aws_security_group.internal_lb_sg.id}"]# TODO: add the private IP from your Machine (without leak)
+    security_groups =  ["${aws_security_group.internal_lb_sg.id}", "${chomp(data.http.myip.body)}/32"]
   }
 }
 
