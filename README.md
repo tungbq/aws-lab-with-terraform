@@ -1,6 +1,6 @@
 # AWS labs with Terraform
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ---
@@ -35,6 +35,7 @@ See: [CONTRIBUTING.md](https://github.com/tungbq/aws-lab-with-terraform/blob/mai
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://allcontributors.org"><img src="https://avatars.githubusercontent.com/u/46410174?v=4?s=100" width="100px;" alt="All Contributors"/><br /><sub><b>All Contributors</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=all-contributors" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ccchameleon"><img src="https://avatars.githubusercontent.com/u/97427549?v=4?s=100" width="100px;" alt="ccchameleon"/><br /><sub><b>ccchameleon</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=ccchameleon" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/navyanihitha"><img src="https://avatars.githubusercontent.com/u/136195092?v=4?s=100" width="100px;" alt="navyanihitha"/><br /><sub><b>navyanihitha</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=navyanihitha" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
