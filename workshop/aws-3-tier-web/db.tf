@@ -18,7 +18,6 @@ resource "aws_rds_cluster_instance" "aurora_sql_for_three_tier_app" {
   publicly_accessible = false
   engine             = aws_rds_cluster.aurora_sql_for_three_tier_app.engine
   engine_version     = aws_rds_cluster.aurora_sql_for_three_tier_app.engine_version
-  skip_final_snapshot = true
 }
 
 resource "aws_rds_cluster" "aurora_sql_for_three_tier_app" {
