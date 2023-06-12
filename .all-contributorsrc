@@ -1,0 +1,125 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "tungbq",
+      "name": "Tung Bui (Leo)",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85242618?v=4",
+      "profile": "https://github.com/tungbq",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Harshal662",
+      "name": "Harshal Abak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/79760384?v=4",
+      "profile": "https://github.com/Harshal662",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Intelrunner",
+      "name": "Eric E.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22569319?v=4",
+      "profile": "http://www.linkedin.com/in/ericethridge",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "blacklovertech",
+      "name": "Janarthanan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/93751501?v=4",
+      "profile": "https://github.com/blacklovertech",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Abraham12611",
+      "name": "Abraham Dahunsi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/113689862?v=4",
+      "profile": "https://github.com/Abraham12611",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Devazc",
+      "name": "Deva Chandragiri",
+      "avatar_url": "https://avatars.githubusercontent.com/u/122866331?v=4",
+      "profile": "http://devazc.netlify.app",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "vedangit",
+      "name": "Vedangi Thokal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/117835144?v=4",
+      "profile": "https://vedangithokal.hashnode.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "all-contributors",
+      "name": "All Contributors",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46410174?v=4",
+      "profile": "https://allcontributors.org",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ccchameleon",
+      "name": "ccchameleon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/97427549?v=4",
+      "profile": "https://github.com/ccchameleon",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "navyanihitha",
+      "name": "navyanihitha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/136195092?v=4",
+      "profile": "https://github.com/navyanihitha",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "navyamulumudi",
+      "name": "navyamulumudi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46550424?v=4",
+      "profile": "https://github.com/navyamulumudi",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Atomicrypt",
+      "name": "CJ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85078088?v=4",
+      "profile": "https://github.com/Atomicrypt",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "aws-lab-with-terraform",
+  "projectOwner": "tungbq"
+}

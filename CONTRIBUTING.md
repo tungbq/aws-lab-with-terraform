@@ -4,7 +4,7 @@ The following information provides a set of guidelines for contributing to the t
 
 ## First steps
 
-The first step is to find an issue you want to fix. To identify issues we think are good for first-time contributors, we add the **good first issue** label.
+The first step is to find an issue you want to fix. To identify issues we think are good for first-time contributors, we add the [good first issue](https://github.com/tungbq/aws-lab-with-terraform/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) label.
 
 Once you find an existing issue that you want to work on or if you have a new issue to create, continue below.
 
@@ -56,7 +56,7 @@ To contribute a change proposal, use the following workflow:
 
     ```
 
-    3. Create a PR on the devops-basic repository. There should be a PR template to help you do so.
+    3. Create a PR on the aws-lab-with-terraform repository. There should be a PR template to help you do so.
 
     4. Wait for your changes to be reviewed. If you are a maintainer, you can assign your PR to one or more reviewers. If you aren't a maintainer, one of the maintainers will assign a reviewer.
 

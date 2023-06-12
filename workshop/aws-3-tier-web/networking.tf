@@ -8,7 +8,7 @@ resource "aws_vpc" "workshop_aws_3_tier_vpc" {
 resource "aws_subnet" "public_web_subnet_1a" {
   vpc_id                  = aws_vpc.workshop_aws_3_tier_vpc.id
   cidr_block              = "10.0.1.0/24"
-  availability_zone       = "us-east-1a" # Replace with your desired availability zone
+  availability_zone       = "us-east-1a"
 
   map_public_ip_on_launch = true
 
@@ -20,7 +20,7 @@ resource "aws_subnet" "public_web_subnet_1a" {
 resource "aws_subnet" "public_web_subnet_1b" {
   vpc_id                  = aws_vpc.workshop_aws_3_tier_vpc.id
   cidr_block              = "10.0.2.0/24"
-  availability_zone       = "us-east-1b" # Replace with your desired availability zone
+  availability_zone       = "us-east-1b"
 
   map_public_ip_on_launch = true
 
@@ -34,7 +34,7 @@ resource "aws_subnet" "public_web_subnet_1b" {
 resource "aws_subnet" "private_app_subnet_1a" {
   vpc_id                  = aws_vpc.workshop_aws_3_tier_vpc.id
   cidr_block              = "10.0.3.0/24"
-  availability_zone       = "us-east-1a" # Replace with your desired availability zone
+  availability_zone       = "us-east-1a"
 
   map_public_ip_on_launch = true
 
@@ -46,7 +46,7 @@ resource "aws_subnet" "private_app_subnet_1a" {
 resource "aws_subnet" "private_app_subnet_1b" {
   vpc_id                  = aws_vpc.workshop_aws_3_tier_vpc.id
   cidr_block              = "10.0.4.0/24"
-  availability_zone       = "us-east-1b" # Replace with your desired availability zone
+  availability_zone       = "us-east-1b"
 
   map_public_ip_on_launch = true
 
@@ -60,7 +60,7 @@ resource "aws_subnet" "private_app_subnet_1b" {
 resource "aws_subnet" "private_db_subnet_1a" {
   vpc_id                  = aws_vpc.workshop_aws_3_tier_vpc.id
   cidr_block              = "10.0.5.0/24"
-  availability_zone       = "us-east-1a" # Replace with your desired availability zone
+  availability_zone       = "us-east-1a"
 
   map_public_ip_on_launch = true
 
@@ -72,7 +72,7 @@ resource "aws_subnet" "private_db_subnet_1a" {
 resource "aws_subnet" "private_db_subnet_1b" {
   vpc_id                  = aws_vpc.workshop_aws_3_tier_vpc.id
   cidr_block              = "10.0.6.0/24"
-  availability_zone       = "us-east-1b" # Replace with your desired availability zone
+  availability_zone       = "us-east-1b"
 
   map_public_ip_on_launch = true
 
@@ -216,7 +216,7 @@ resource "aws_security_group" "internet_facing_lb_sg" {
     from_port        = 80
     to_port          = 80
     protocol         = "tcp"
-    cidr_blocks      = ["${chomp(data.http.myip.body)}/32"]
+    cidr_blocks      = ["${chomp(data.http.myip.response_body)}/32"]
   }
 }
 
@@ -272,7 +272,7 @@ resource "aws_security_group" "app_tier_sg" {
     from_port        = 4000
     to_port          = 4000
     protocol         = "tcp"
-    cidr_blocks      = ["${chomp(data.http.myip.body)}/32"]
+    cidr_blocks      = ["${chomp(data.http.myip.response_body)}/32"]
   }
 }
 
