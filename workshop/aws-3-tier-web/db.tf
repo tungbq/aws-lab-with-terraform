@@ -14,11 +14,10 @@ resource "aws_db_subnet_group" "three_tier_db_subnet_group" {
 
 resource "aws_rds_cluster_instance" "aurora_sql_for_three_tier_app" {
   cluster_identifier = aws_rds_cluster.aurora_sql_for_three_tier_app.id
-  instance_class = "db.t2.micro" # Minimize the cost
+  instance_class = "db.r5.large" # Minimize the cost
   publicly_accessible = false
   engine             = aws_rds_cluster.aurora_sql_for_three_tier_app.engine
   engine_version     = aws_rds_cluster.aurora_sql_for_three_tier_app.engine_version
-  multi_az = false
 }
 
 resource "aws_rds_cluster" "aurora_sql_for_three_tier_app" {
@@ -27,7 +26,7 @@ resource "aws_rds_cluster" "aurora_sql_for_three_tier_app" {
   database_name           = "aurora_sql_for_three_tier_app"
   master_username         = "test" # to be used from local env variables
   master_password         = "tobeupdated" # to be used from local env variables
-  engine                  = "mysql" # TODO: check the cost, then use 'aurora-mysql' with right instance class
+  engine                  = "aurora-mysql" # TODO: check the cost
   iam_database_authentication_enabled = true
   vpc_security_group_ids = [aws_security_group.db_tier_sg.id]
   db_subnet_group_name =    aws_db_subnet_group.three_tier_db_subnet_group.name
