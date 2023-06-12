@@ -18,6 +18,7 @@ resource "aws_rds_cluster_instance" "aurora_sql_for_three_tier_app" {
   publicly_accessible = false
   engine             = aws_rds_cluster.aurora_sql_for_three_tier_app.engine
   engine_version     = aws_rds_cluster.aurora_sql_for_three_tier_app.engine_version
+  skip_final_snapshot = true
 }
 
 resource "aws_rds_cluster" "aurora_sql_for_three_tier_app" {
@@ -27,8 +28,9 @@ resource "aws_rds_cluster" "aurora_sql_for_three_tier_app" {
   master_username         = "test" # to be used from local env variables
   master_password         = "tobeupdated" # to be used from local env variables
   engine                  = "aurora-mysql"
-  engine_version = "5.7.mysql_aurora.2.03.2"
+  engine_version          = "5.7.mysql_aurora.2.03.2"
   iam_database_authentication_enabled = true
   vpc_security_group_ids = [aws_security_group.db_tier_sg.id]
   db_subnet_group_name =    aws_db_subnet_group.three_tier_db_subnet_group.name
+  skip_final_snapshot = true
 }
