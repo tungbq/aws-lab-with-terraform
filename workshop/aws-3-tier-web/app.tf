@@ -14,6 +14,16 @@ resource "aws_instance" "app" {
   #!/bin/bash -xe
   ping 8.8.8.8
   sudo yum install mysql -y
+  mysql -h ${aws_rds_cluster.aurora_sql_for_three_tier_app.endpoint} -u ${aws_rds_cluster.aurora_sql_for_three_tier_app.master_username} -p ${aws_rds_cluster.aurora_sql_for_three_tier_app.master_password}
+  CREATE DATABASE webappdb;
+  SHOW DATABASES;
+  USE webappdb;
+  CREATE TABLE IF NOT EXISTS transactions(id INT NOT NULL
+  AUTO_INCREMENT, amount DECIMAL(10,2), description
+  VARCHAR(100), PRIMARY KEY(id));    
+  SHOW TABLES;    
+  INSERT INTO transactions (amount,description) VALUES ('400','groceries');   
+  SELECT * FROM transactions;
   EOL
 
   tags = {
