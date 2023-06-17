@@ -3,7 +3,7 @@
 
 
 resource "aws_instance" "app" {
-  ami           = "ami-022e1a32d3f742bd8"
+  ami           = "ami-090e0fc566929d98b" # AMI with SSM preinstalled
   instance_type = "t2.micro"
   subnet_id = aws_subnet.private_app_subnet_1a.id
   iam_instance_profile = aws_iam_instance_profile.ec2_role_for_s3_ssm_profile.name
