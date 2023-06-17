@@ -33,3 +33,7 @@ resource "aws_rds_cluster" "aurora_sql_for_three_tier_app" {
   skip_final_snapshot = true
   apply_immediately = true
 }
+
+output "rds_endpoint" {
+  value = "${aws_rds_cluster.aurora_sql_for_three_tier_app.endpoint}"
+}
