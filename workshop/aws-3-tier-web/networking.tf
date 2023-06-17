@@ -1,3 +1,9 @@
+variable "skip_natgateway" {
+  type    = bool
+  default = false
+}
+
+
 ##### VPC creation
 resource "aws_vpc" "workshop_aws_3_tier_vpc" {
   cidr_block = "10.0.0.0/16"
@@ -102,6 +108,7 @@ resource "aws_eip" "nat_gateway_eip_1a" {
 resource "aws_nat_gateway" "public_web_subnet_1a_nat" {
   subnet_id     = aws_subnet.public_web_subnet_1a.id
   allocation_id = aws_eip.nat_gateway_eip_1a.id
+  count = var.skip_natgateway ? 0 : 1
 
   tags = {
     Name = "NAT Gateway AZ 1A"
@@ -119,6 +126,7 @@ resource "aws_eip" "nat_gateway_eip_1b" {
 resource "aws_nat_gateway" "public_web_subnet_1b_nat" {
   subnet_id     = aws_subnet.public_web_subnet_1b.id
   allocation_id = aws_eip.nat_gateway_eip_1b.id
+  count = var.skip_natgateway ? 0 : 1
 
   tags = {
     Name = "NAT Gateway AZ 1B"
@@ -160,11 +168,13 @@ resource "aws_route_table_association" "rt_to_public_web_subnet_1b" {
 ## private 1A
 resource "aws_route_table" "private_rt_az_1a" {
   vpc_id = aws_vpc.workshop_aws_3_tier_vpc.id
+  # argument = "${join("", aws_nat_gateway.public_web_subnet_1a_nat.*.attribute)}"
 
   # Allowing public IP to comunicate with NAT Gateway
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.public_web_subnet_1a_nat.id
+    # gateway_id = aws_nat_gateway.public_web_subnet_1a_nat.id
+    gateway_id = "${join("", aws_nat_gateway.public_web_subnet_1a_nat.id)}"
   }
 
   tags = {
@@ -181,11 +191,13 @@ resource "aws_route_table_association" "rt_to_private_web_subnet_1a" {
 ## private 1B
 resource "aws_route_table" "private_rt_az_1b" {
   vpc_id = aws_vpc.workshop_aws_3_tier_vpc.id
+  # argument = "${join("", aws_nat_gateway.public_web_subnet_1b_nat.*.attribute)}"
 
   # Allowing public IP to comunicate with NAT Gateway
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.public_web_subnet_1b_nat.id
+    # gateway_id = aws_nat_gateway.public_web_subnet_1b_nat.id
+    gateway_id = "${join("", aws_nat_gateway.public_web_subnet_1b_nat.id)}"
   }
 
   tags = {
