@@ -10,6 +10,12 @@ resource "aws_instance" "app" {
 
   security_groups = [aws_security_group.app_tier_sg.id]
 
+  user_data = <<-EOL
+  #!/bin/bash -xe
+  ping 8.8.8.8
+  sudo yum install mysql -y
+  EOL
+
   tags = {
     Name = "AppLayer"
   }
