@@ -15,6 +15,8 @@ resource "aws_instance" "app" {
   ping 8.8.8.8
   sudo yum install mysql -y
   mysql -h ${aws_rds_cluster.aurora_sql_for_three_tier_app.endpoint} -u ${aws_rds_cluster.aurora_sql_for_three_tier_app.master_username} -p ${aws_rds_cluster.aurora_sql_for_three_tier_app.master_password} < "${path.module}/db_init.sql"
+  touch debugging.txt
+  echo ${aws_rds_cluster.aurora_sql_for_three_tier_app.endpoint} > debugging.txt
   EOL
 
   tags = {
