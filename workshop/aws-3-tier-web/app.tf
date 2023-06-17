@@ -19,4 +19,6 @@ resource "aws_instance" "app" {
   tags = {
     Name = "AppLayer"
   }
+
+  depends_on = [aws_rds_cluster.aurora_sql_for_three_tier_app]
 }
