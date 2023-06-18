@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "tungbq_sample_s3_bucket" {
-  bucket = "tungbq_sample_s3_bucket"
+  bucket = "tungbq-sample-s3-bucket"
 
   tags = {
     Name        = "S3 bucket to store code"
