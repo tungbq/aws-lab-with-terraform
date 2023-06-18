@@ -37,3 +37,4 @@ resource "aws_rds_cluster" "aurora_sql_for_three_tier_app" {
 output "rds_endpoint" {
   value = "${aws_rds_cluster.aurora_sql_for_three_tier_app.endpoint}"
 }
+
