@@ -1,0 +1,2 @@
+- [x] S3 Static website
+- [ ] ...to be added
