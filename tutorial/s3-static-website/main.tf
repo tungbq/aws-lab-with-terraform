@@ -56,11 +56,11 @@ POLICY
 }
 
 locals {
-  object_source = "${path.module}/asset/index.html"
+  index_html_source = "${path.module}/asset/index.html"
 }
 
 resource "aws_s3_object" "file_upload" {
   bucket      = "${aws_s3_bucket.tungbq_s3_website.bucket}"
   key         = "index.html"
-  source      = local.object_source
+  source      = local.index_html_source
 }
