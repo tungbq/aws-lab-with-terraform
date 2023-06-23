@@ -63,6 +63,7 @@ resource "aws_s3_object" "index_file_upload" {
   bucket      = "${aws_s3_bucket.tungbq_s3_website.bucket}"
   key         = "index.html"
   source      = local.index_html_source
+  content_type = "text/html"
 }
 
 
@@ -74,4 +75,5 @@ resource "aws_s3_object" "err_file_upload" {
   bucket      = "${aws_s3_bucket.tungbq_s3_website.bucket}"
   key         = "error.html"
   source      = local.error_html_source
+  content_type = "text/html"
 }
