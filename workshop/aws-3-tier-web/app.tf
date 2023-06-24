@@ -1,5 +1,5 @@
 # Docs: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
-# t2.micro node with an AWS Tag naming it "HelloWorld"
+# t2.micro node with an AWS Tag naming it "AppLayer"
 
 
 resource "aws_instance" "app" {
