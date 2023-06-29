@@ -6,6 +6,9 @@ resource "aws_amplify_app" "example" {
   name       = "example"
   repository = "https://github.com/tungbq/source-serverless-basic-application"
 
+  # GitHub personal access token
+  access_token = var.token
+
   build_spec = <<-EOT
     version: 1
     frontend:
