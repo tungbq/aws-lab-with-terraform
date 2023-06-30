@@ -6,4 +6,4 @@
 # Apply:
 - `terraform apply -auto-approve -var-file="cred.tfvars"`
 # Destroy
-- `terraform destroy -auto-approve`
+- `terraform destroy -auto-approve -var-file="cred.tfvars"`

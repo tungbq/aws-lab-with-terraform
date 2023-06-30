@@ -9,6 +9,22 @@ resource "aws_amplify_app" "demo_web" {
   # GitHub personal access token
   access_token = var.token
 
+  enable_auto_branch_creation = true
+  enable_branch_auto_build = true
+  enable_branch_auto_deletion = true
+
+
+  # The default patterns added by the Amplify Console.
+  auto_branch_creation_patterns = [
+    "*",
+    "*/**",
+  ]
+
+  auto_branch_creation_config {
+    # Enable auto build for the created branch.
+    enable_auto_build = true
+  }
+
   build_spec = <<-EOT
     version: 1
     frontend:
