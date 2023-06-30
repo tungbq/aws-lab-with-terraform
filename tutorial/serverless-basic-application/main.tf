@@ -57,3 +57,10 @@ resource "aws_amplify_app" "demo_web" {
     ENV = "test"
   }
 }
+
+resource "aws_amplify_branch" "main" {
+  app_id      = aws_amplify_app.demo_web.id
+  branch_name = "main"
+
+  stage = "PRODUCTION"
+}
