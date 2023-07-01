@@ -2,7 +2,7 @@
 data "archive_file" "lambda_hello_world" {
   type = "zip"
 
-  source_dir  = "${path.module}/assets/lamda_function.py"
+  source_dir  = "${path.module}/assets"
   output_path = "${path.module}/assets/lamda_function.zip"
 }
 
