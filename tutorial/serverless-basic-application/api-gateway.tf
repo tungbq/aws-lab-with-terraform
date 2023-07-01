@@ -11,23 +11,24 @@ resource "aws_api_gateway_stage" "lambda" {
 
   stage_name            = "serverless_lambda_stage"
 
-  access_log_settings {
-    destination_arn = aws_cloudwatch_log_group.api_gw.arn
+  # Temporarity disable logging. TODO: work on it later
+  # access_log_settings {
+  #   destination_arn = aws_cloudwatch_log_group.api_gw.arn
 
-    format = jsonencode({
-      requestId               = "$context.requestId"
-      sourceIp                = "$context.identity.sourceIp"
-      requestTime             = "$context.requestTime"
-      protocol                = "$context.protocol"
-      httpMethod              = "$context.httpMethod"
-      resourcePath            = "$context.resourcePath"
-      routeKey                = "$context.routeKey"
-      status                  = "$context.status"
-      responseLength          = "$context.responseLength"
-      integrationErrorMessage = "$context.integrationErrorMessage"
-      }
-    )
-  }
+  #   format = jsonencode({
+  #     requestId               = "$context.requestId"
+  #     sourceIp                = "$context.identity.sourceIp"
+  #     requestTime             = "$context.requestTime"
+  #     protocol                = "$context.protocol"
+  #     httpMethod              = "$context.httpMethod"
+  #     resourcePath            = "$context.resourcePath"
+  #     routeKey                = "$context.routeKey"
+  #     status                  = "$context.status"
+  #     responseLength          = "$context.responseLength"
+  #     integrationErrorMessage = "$context.integrationErrorMessage"
+  #     }
+  #   )
+  # }
 }
 
 # Resource
@@ -74,11 +75,12 @@ resource "aws_api_gateway_deployment" "example" {
 }
 
 # Logging
-resource "aws_cloudwatch_log_group" "api_gw" {
-  name = "/aws/api_gw/${aws_api_gateway_rest_api.lambda.name}"
+# Temporarity disable logging. TODO: work on it later
+# resource "aws_cloudwatch_log_group" "api_gw" {
+#   name = "/aws/api_gw/${aws_api_gateway_rest_api.lambda.name}"
 
-  retention_in_days = 30
-}
+#   retention_in_days = 30
+# }
 
 resource "aws_lambda_permission" "api_gw" {
   statement_id  = "AllowExecutionFromAPIGateway"
