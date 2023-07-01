@@ -1,18 +1,8 @@
-# Flow: New API -> Resource -> Method -> Interation -> Deployment
+# Flow: 
+# New API -> Resource -> Method -> Interation -> Deployment
 
 resource "aws_api_gateway_rest_api" "lambda" {
   name          = "serverless_lambda_gw"
-}
-
-# Stage
-resource "aws_api_gateway_stage" "lambda" {
-  rest_api_id    = aws_api_gateway_rest_api.lambda.id
-  deployment_id = aws_api_gateway_deployment.example.id
-
-  stage_name            = "serverless_lambda_stage"
-
-  # Temporarity disable logging. TODO: work on it later
-  # access_log_settings { ... }
 }
 
 # Resource
@@ -45,7 +35,6 @@ resource "aws_api_gateway_deployment" "example" {
   rest_api_id = aws_api_gateway_rest_api.lambda.id
 
   triggers = {
-    # redeployment = sha1(jsonencode(aws_api_gateway_rest_api.lambda.body))
     redeployment = sha1(jsonencode([
       aws_api_gateway_resource.resource.id,
       aws_api_gateway_method.method.id,
@@ -58,14 +47,15 @@ resource "aws_api_gateway_deployment" "example" {
   }
 }
 
+# Stage
+resource "aws_api_gateway_stage" "lambda" {
+  rest_api_id    = aws_api_gateway_rest_api.lambda.id
+  deployment_id = aws_api_gateway_deployment.example.id
+  stage_name            = "serverless_lambda_stage"
+
+  # Temporarity disable logging. TODO: work on it later
+  # access_log_settings { ... }
+}
+
 # Logging
 # Temporarity disable logging. TODO: work on it later
-
-resource "aws_lambda_permission" "api_gw" {
-  statement_id  = "AllowExecutionFromAPIGateway"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.hello_world.function_name
-  principal     = "apigateway.amazonaws.com"
-
-  source_arn = "${aws_api_gateway_rest_api.lambda.execution_arn}/*/*"
-}
