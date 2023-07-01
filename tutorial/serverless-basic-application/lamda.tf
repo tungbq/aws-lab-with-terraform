@@ -10,7 +10,7 @@ resource "aws_s3_bucket" "tungbq_lamda_source" {
   bucket = "tungbq-lamda-source"
 
   tags = {
-    Name        = "S3 bucket to store website"
+    Name        = "S3 bucket to store lamda source code"
     Environment = "Dev"
   }
 }
