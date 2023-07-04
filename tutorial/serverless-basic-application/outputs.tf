@@ -9,3 +9,10 @@ output "base_url" {
 
   value = aws_api_gateway_stage.lambda.invoke_url
 }
+
+
+output "dynamo_db_arn" {
+  description = "Base URL for API Gateway stage."
+
+  value = aws_dynamodb_table.basic-dynamodb-table.arn
+}
