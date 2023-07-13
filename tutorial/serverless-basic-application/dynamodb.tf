@@ -1,4 +1,4 @@
-resource "aws_dynamodb_table" "basic-dynamodb-table" {
+resource "aws_dynamodb_table" "basic_dynamodb_table" {
   name           = "DebugTable"
   billing_mode   = "PROVISIONED"
   read_capacity  = 5
