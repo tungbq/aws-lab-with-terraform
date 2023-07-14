@@ -9,7 +9,7 @@ import time
 # create a DynamoDB object using the AWS SDK
 dynamodb = boto3.resource('dynamodb')
 # use the DynamoDB object to select our table
-table = dynamodb.Table('HelloWorldDatabase')
+table = dynamodb.Table('DebugTableHelloWorld') # TODO, use this from env variable to align with the terraform instead of harccoding here
 
 # define the handler function that the Lambda service will use as an entry point
 def lambda_handler(event, context):
