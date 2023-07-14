@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "basic_dynamodb_table" {
-  name           = "DebugTable"
+  name           = "DebugTableHelloWorld"
   billing_mode   = "PROVISIONED"
   read_capacity  = 5
   write_capacity = 5
