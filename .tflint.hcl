@@ -10,9 +10,6 @@ config {
     "terraform-aws-modules/vpc/aws"            = true
     "terraform-aws-modules/security-group/aws" = true
   }
-
-  varfile = ["example1.tfvars", "example2.tfvars"]
-  variables = ["foo=bar", "bar=[\"baz\"]"]
 }
 
 plugin "aws" {
