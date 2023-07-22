@@ -1,6 +1,6 @@
 # AWS labs with Terraform
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ---
@@ -38,6 +38,7 @@ See: [CONTRIBUTING.md](https://github.com/tungbq/aws-lab-with-terraform/blob/mai
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/navyanihitha"><img src="https://avatars.githubusercontent.com/u/136195092?v=4?s=100" width="100px;" alt="navyanihitha"/><br /><sub><b>navyanihitha</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=navyanihitha" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/navyamulumudi"><img src="https://avatars.githubusercontent.com/u/46550424?v=4?s=100" width="100px;" alt="navyamulumudi"/><br /><sub><b>navyamulumudi</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=navyamulumudi" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Atomicrypt"><img src="https://avatars.githubusercontent.com/u/85078088?v=4?s=100" width="100px;" alt="CJ"/><br /><sub><b>CJ</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=Atomicrypt" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/viktoriussuwandi"><img src="https://avatars.githubusercontent.com/u/68414300?v=4?s=100" width="100px;" alt="Viktorius Suwandi"/><br /><sub><b>Viktorius Suwandi</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=viktoriussuwandi" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
