@@ -14,7 +14,8 @@
 - Follow: https://developer.hashicorp.com/terraform/tutorials/aws-get-started
 
 ## Contributing
-See: [CONTRIBUTING.md](https://github.com/tungbq/aws-lab-with-terraform/blob/main/CONTRIBUTING.md). Thanks! 💖
+- See: [CONTRIBUTING.md](https://github.com/tungbq/aws-lab-with-terraform/blob/main/CONTRIBUTING.md). Thanks! 💖
+- If you find this repository helpful, kindly consider showing your appreciation by giving it a star ⭐. Thanks! 💖
 
 ## Contributors
 
