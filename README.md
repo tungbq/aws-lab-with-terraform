@@ -15,6 +15,7 @@
 
 ## Contributing
 - See: [CONTRIBUTING.md](https://github.com/tungbq/aws-lab-with-terraform/blob/main/CONTRIBUTING.md). Thanks! 💖
+- Looking for the issue to work on? Check the list of our open [good first issue](https://github.com/tungbq/aws-lab-with-terraform/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 - If you find this repository helpful, kindly consider showing your appreciation by giving it a star ⭐. Thanks! 💖
 
 ## Contributors
