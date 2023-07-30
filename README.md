@@ -8,6 +8,8 @@
 
 - See: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
+## Getting started with AWS
+- See: https://aws.amazon.com/
 
 ## Terraform Getting Started - AWS 
 
