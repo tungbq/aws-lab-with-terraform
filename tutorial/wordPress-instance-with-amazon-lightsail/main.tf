@@ -8,4 +8,3 @@ resource "aws_lightsail_instance" "wordpress" {
     type = "wordpress"
   }
 }
-
