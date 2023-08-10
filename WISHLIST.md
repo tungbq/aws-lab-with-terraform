@@ -9,3 +9,4 @@
 - [ ] [Access container applications privately on Amazon ECS](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/access-container-applications-privately-on-amazon-ecs-by-using-aws-fargate-aws-privatelink-and-a-network-load-balancer.html)
 - [ ] [Amazon EC2 Backup and Restore Using AWS Backup](https://aws.amazon.com/getting-started/hands-on/amazon-ec2-backup-and-restore-using-aws-backup/?ref=gsrchandson&id=itprohandson)
 - [ ] Add AWS EC2 as self-hosted runner for Github Action
+- [ ] [aws-multi-region-cicd-with-terraform](https://github.com/aws-samples/aws-multi-region-cicd-with-terraform)
