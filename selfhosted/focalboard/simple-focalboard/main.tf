@@ -7,9 +7,30 @@ resource "aws_instance" "focalboard_instance" {
   ami           = "ami-0a0c8eebcdd6dcbd0" # Ubuntu 22.04
   instance_type = "t2.micro"
 
+  security_groups = [aws_security_group.focalboard_sg.name]
+
   user_data = file("${path.module}/scripts/install_app.sh")
 
   tags = {
     Name = "focalboard-instance"
+  }
+}
+
+resource "aws_security_group" "focalboard_sg" {
+  name        = "focalboard-security-group"
+  description = "Focalboard security group allowing ports 22 and 80"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
