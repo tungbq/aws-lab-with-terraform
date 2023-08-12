@@ -1,21 +1,26 @@
 #!/bin/bash
 
-# install focalboard
-wget https://github.com/mattermost/focalboard/releases/download/v7.10.4/focalboard-server-linux-amd64.tar.gz
-tar -xvzf focalboard-server-linux-amd64.tar.gz
-mv focalboard /opt
+install_focalboard() {
+    version=$1
+    wget "https://github.com/mattermost/focalboard/releases/download/$1/focalboard-server-linux-amd64.tar.gz"
+    tar -xvzf focalboard-server-linux-amd64.tar.gz
+    mv focalboard /opt
+}
 
-# install NGINX
-apt update -y
-apt install -y nginx
+install_nginx() {
+    # install NGINX
+    apt update -y
+    apt install -y nginx
+}
 
-# Configure NGINX
-# nano /etc/nginx/sites-available/focalboard
+configure_nginx() {
+    # Configure NGINX
+    # nano /etc/nginx/sites-available/focalboard
 
-# Note: We cannot know the server.server_name with default EC2 launch, cuz the URL we only know after deployment
-# TODO: investigate to improve
+    # Note: We cannot know the server.server_name with default EC2 launch, cuz the URL we only know after deployment
+    # TODO: investigate to improve
 
-cat <<EOF >/etc/nginx/sites-available/focalboard
+    cat <<EOF > /etc/nginx/sites-available/focalboard
 upstream focalboard {
     server localhost:8000;
     keepalive 32;
@@ -65,17 +70,23 @@ server {
     }
 }
 EOF
+}
 
-# delete default site if existed
-rm /etc/nginx/sites-enabled/default
+remove_default_site() {
+    # delete default site if existed
+    rm /etc/nginx/sites-enabled/default
+}
 
-# Enable the Focalboard site
-ln -s /etc/nginx/sites-available/focalboard /etc/nginx/sites-enabled/focalboard
-nginx -t
-/etc/init.d/nginx reload
+enable_focalboard_site() {
+    # Enable the Focalboard site
+    ln -s /etc/nginx/sites-available/focalboard /etc/nginx/sites-enabled/focalboard
+    nginx -t
+    /etc/init.d/nginx reload
+}
 
-# Configure Focalboard to run as a service
-cat <<EOF >/lib/systemd/system/focalboard.service
+configure_focalboard_to_run_as_a_service() {
+    # Configure Focalboard to run as a service
+    cat <<EOF >/lib/systemd/system/focalboard.service
 [Unit]
 Description=Focalboard server
 
@@ -89,12 +100,31 @@ WorkingDirectory=/opt/focalboard
 [Install]
 WantedBy=multi-user.target
 EOF
+    # Reload and start new unit
+    systemctl daemon-reload
+    systemctl start focalboard.service
+    systemctl enable focalboard.service
+}
 
-# Reload and start new unit
-systemctl daemon-reload
-systemctl start focalboard.service
-systemctl enable focalboard.service
+check_result() {
+    curl localhost:8000
+    curl localhost
+}
 
-# Checking
-curl localhost:8000
-curl localhost
+###################
+#### main #########
+###################
+
+FOCALBOARD_VERSION="v7.8.7"
+
+install_focalboard $FOCALBOARD_VERSION
+
+install_nginx
+configure_nginx
+
+remove_default_site
+enable_focalboard_site
+
+configure_focalboard_to_run_as_a_service
+
+check_result
