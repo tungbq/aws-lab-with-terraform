@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "focalboard_instance" {
   # To get the AMI ID, visit: https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#AMICatalog
-  ami           = "ami-0a0c8eebcdd6dcbd0" # Ubuntu 22.04
+  ami           = "ami-0261755bbcb8c4a84" # Ubuntu 20.04
   instance_type = "t2.micro"
 
   security_groups = [aws_security_group.focalboard_sg.name]
@@ -30,6 +30,13 @@ resource "aws_security_group" "focalboard_sg" {
   ingress {
     from_port   = 80
     to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
