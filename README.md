@@ -25,6 +25,7 @@
 | tutorial | Serverless Basic Application |[serverless-basic-application](./tutorial/serverless-basic-application)| ✔️ Done |
 | tutorial | WordPress Instance With Amazon Lightsail |[wordPress-instance-with-amazon-lightsail](./tutorial/wordPress-instance-with-amazon-lightsail)| ✔️ Done |
 | workshop | AWS 3 tier web application |[aws-3-tier-web](./workshop/aws-3-tier-web)| ✔️ Done |
+| selfhosted | Focalboard App |[selfhosted](./selfhosted/)| In-progress |
 
 ## Contributing
 - See: [CONTRIBUTING.md](https://github.com/tungbq/aws-lab-with-terraform/blob/main/CONTRIBUTING.md). Thanks! 💖
