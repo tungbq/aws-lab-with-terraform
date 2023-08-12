@@ -7,6 +7,8 @@ resource "aws_instance" "focalboard_instance" {
   ami           = "ami-0a0c8eebcdd6dcbd0" # Ubuntu 22.04
   instance_type = "t2.micro"
 
+  user_data = file("${path.module}/scripts/install_app.sh")
+
   tags = {
     Name = "focalboard-instance"
   }
