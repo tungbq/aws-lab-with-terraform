@@ -3,15 +3,15 @@
 # install focalboard
 wget https://github.com/mattermost/focalboard/releases/download/v7.10.4/focalboard-server-linux-amd64.tar.gz
 tar -xvzf focalboard-server-linux-amd64.tar.gz
-sudo mv focalboard /opt
+mv focalboard /opt
 
 # install NGINX
-sudo apt update -y
-sudo apt install -y nginx
+apt update -y
+apt install -y nginx
 
 # Configure NGINX
-# sudo nano /etc/nginx/sites-available/focalboard
-cat << EOF > /etc/nginx/sites-available/focalboard
+# nano /etc/nginx/sites-available/focalboard
+cat <<EOF >/etc/nginx/sites-available/focalboard
 upstream focalboard {
      server localhost:8000;
      keepalive 32;
@@ -62,3 +62,36 @@ upstream focalboard {
    }
 }
 EOF
+
+# delete default site if existed
+rm /etc/nginx/sites-enabled/default
+
+# Enable the Focalboard site
+ln -s /etc/nginx/sites-available/focalboard /etc/nginx/sites-enabled/focalboard
+nginx -t
+/etc/init.d/nginx reload
+
+# Configure Focalboard to run as a service
+cat <<EOF >/lib/systemd/system/focalboard.service
+[Unit]
+Description=Focalboard server
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+ExecStart=/opt/focalboard/bin/focalboard-server
+WorkingDirectory=/opt/focalboard
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Reload and start new unit
+systemctl daemon-reload
+systemctl start focalboard.service
+systemctl enable focalboard.service
+
+# Checking
+curl localhost:8080
+curl localhost
