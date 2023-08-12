@@ -18,7 +18,7 @@
 ## Demo list
 | Category | Name | URL | Status |
 |:---|:---|:---|:---|
-| getting-started | EC2 Create Simple Instance |https://hands-on.cloud/terraform-alb-guide/| Done |
+| getting-started | EC2 Create Simple Instance |[ec2/create-simple-instance](./getting-started/ec2/create-simple-instance)| Done |
 
 ## Contributing
 - See: [CONTRIBUTING.md](https://github.com/tungbq/aws-lab-with-terraform/blob/main/CONTRIBUTING.md). Thanks! 💖
