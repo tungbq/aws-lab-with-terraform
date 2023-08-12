@@ -23,6 +23,7 @@
 | getting-started | S3 Create Simple Bucket |[s3/create-new-bucket](./getting-started/s3/create-new-bucket)| Done |
 | tutorial | S3 Static Website |[s3-static-website](./tutorial/s3-static-website)| Done |
 | tutorial | Serverless Basic Application |[serverless-basic-application](./tutorial/serverless-basic-application)| Done |
+| tutorial | WordPress Instance With Amazon Lightsail |[wordPress-instance-with-amazon-lightsail](./tutorial/wordPress-instance-with-amazon-lightsail)| Done |
 
 ## Contributing
 - See: [CONTRIBUTING.md](https://github.com/tungbq/aws-lab-with-terraform/blob/main/CONTRIBUTING.md). Thanks! 💖
