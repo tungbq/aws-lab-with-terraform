@@ -114,17 +114,12 @@ check_result() {
 ###################
 #### main #########
 ###################
-
 FOCALBOARD_VERSION="v7.8.7"
 
 install_focalboard $FOCALBOARD_VERSION
-
 install_nginx
 configure_nginx
-
 remove_default_site
 enable_focalboard_site
-
 configure_focalboard_to_run_as_a_service
-
 check_result
