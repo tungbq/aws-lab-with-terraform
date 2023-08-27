@@ -1,9 +1,5 @@
-# Todo:
+# To-do
 - Add a guide on how to get github access token
 
-# Init:
-- `terraform init`
-# Apply:
-- `terraform apply -auto-approve -var-file="cred.tfvars"`
-# Destroy
-- `terraform destroy -auto-approve -var-file="cred.tfvars"`
+# Demo
+### To deploy Lab for this demo - check the [terraform guideline](../../TERRAFORM-GUIDE.md) 📖
