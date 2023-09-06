@@ -11,3 +11,4 @@
 - [ ] Add AWS EC2 as self-hosted runner for Github Action
 - [ ] [aws-multi-region-cicd-with-terraform](https://github.com/aws-samples/aws-multi-region-cicd-with-terraform)
 - [ ] [amazon-s3-object-lambda-to-dynamically-watermark-images](https://aws.amazon.com/getting-started/hands-on/amazon-s3-object-lambda-to-dynamically-watermark-images/)
+- [ ] [create-audio-transcript-transcribe](https://aws.amazon.com/getting-started/hands-on/create-audio-transcript-transcribe)
