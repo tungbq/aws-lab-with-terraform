@@ -21,9 +21,10 @@
 |:---|:---|:---|:---|
 | getting-started | EC2 Create Simple Instance |[ec2/create-simple-instance](./getting-started/ec2/create-simple-instance)| ✔️ Done |
 | getting-started | S3 Create Simple Bucket |[s3/create-new-bucket](./getting-started/s3/create-new-bucket)| ✔️ Done |
+| getting-started | local-exec/single-command | [getting-started/local-exec/single-command](./getting-started/local-exec/single-command) | ✔️ Done |
 | tutorial | S3 Static Website |[s3-static-website](./tutorial/s3-static-website)| ✔️ Done |
 | tutorial | Serverless Basic Application |[serverless-basic-application](./tutorial/serverless-basic-application)| ✔️ Done |
-| tutorial | WordPress Instance With Amazon Lightsail |[wordPress-instance-with-amazon-lightsail](./tutorial/wordPress-instance-with-amazon-lightsail)| ✔️ Done |
+| tutorial | WordPress Instance With Amazon Lightsail |[wordPress-instance-with-amazon-lightsail](./tutorial/wordPress-instance-with-amazon-lightsail)|✔️Done |
 | workshop | AWS 3 tier web application |[aws-3-tier-web](./workshop/aws-3-tier-web)| ✔️ Done |
 | selfhosted | Focalboard App Basic on AWS EC2 Ubuntu |[focalboard/simple-focalboard](./selfhosted/focalboard/simple-focalboard)| ✔️ Done |
 
