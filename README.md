@@ -16,6 +16,9 @@
 
 - Follow: https://developer.hashicorp.com/terraform/tutorials/aws-get-started
 
+## New to AWS? Creating an AWS account
+- Follow: https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-creating.html
+
 ## Demo list ✔️
 
 | Category | Name | URL | Status |
