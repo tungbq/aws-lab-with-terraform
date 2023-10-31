@@ -15,6 +15,9 @@
 
 - Follow: https://developer.hashicorp.com/terraform/tutorials/aws-get-started
 
+## Terraform provider latest doc
+- See: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+
 ## Demo list ✔️
 
 | Category | Name | URL | Status |
