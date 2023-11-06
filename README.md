@@ -8,12 +8,16 @@
 
 - See: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
+
 ## Getting started with AWS
 - See: https://aws.amazon.com/
 
-## Terraform Getting Started - AWS 
+## Terraform Getting Started - AWS
 
 - Follow: https://developer.hashicorp.com/terraform/tutorials/aws-get-started
+
+## New to AWS? Creating an AWS account
+- Follow: https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-creating.html
 
 ## Demo list ✔️
 
