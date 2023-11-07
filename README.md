@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
----
+
 ## How to install Terraform
 
 - See: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
