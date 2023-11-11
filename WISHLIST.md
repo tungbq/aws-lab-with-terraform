@@ -15,3 +15,4 @@
 - [ ] [tutorials-ecs-ecr-codedeploy](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html)
 ## DevOps list
 - [ ] [monitor-use-of-a-shared-amazon-machine-image-across-multiple-aws-accounts](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/monitor-use-of-a-shared-amazon-machine-image-across-multiple-aws-accounts.html)
+- [ ] [automatically-build-and-deploy-a-java-application-to-amazon-eks-using-a-ci-cd-pipeline.html](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/automatically-build-and-deploy-a-java-application-to-amazon-eks-using-a-ci-cd-pipeline.html?did=pg_card&trk=pg_card)
