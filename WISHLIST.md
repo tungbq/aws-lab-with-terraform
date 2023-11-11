@@ -16,3 +16,4 @@
 ## DevOps list
 - [ ] [monitor-use-of-a-shared-amazon-machine-image-across-multiple-aws-accounts](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/monitor-use-of-a-shared-amazon-machine-image-across-multiple-aws-accounts.html)
 - [ ] [automatically-build-and-deploy-a-java-application-to-amazon-eks-using-a-ci-cd-pipeline.html](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/automatically-build-and-deploy-a-java-application-to-amazon-eks-using-a-ci-cd-pipeline.html?did=pg_card&trk=pg_card)
+- [ ] [AWS DevOps prescriptive-guidance](https://aws.amazon.com/prescriptive-guidance/?apg-all-cards.sort-by=item.additionalFields.sortDate&apg-all-cards.sort-order=desc&awsf.apg-new-filter=*all&awsf.apg-content-type-filter=*all&awsf.apg-code-filter=*all&awsf.apg-category-filter=categories%23devops&awsf.apg-rtype-filter=*all&awsf.apg-isv-filter=*all&awsf.apg-product-filter=*all&awsf.apg-env-filter=*all&awsm.page-apg-all-cards=5)
