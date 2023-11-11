@@ -13,3 +13,5 @@
 - [ ] [amazon-s3-object-lambda-to-dynamically-watermark-images](https://aws.amazon.com/getting-started/hands-on/amazon-s3-object-lambda-to-dynamically-watermark-images/)
 - [ ] [create-audio-transcript-transcribe](https://aws.amazon.com/getting-started/hands-on/create-audio-transcript-transcribe)
 - [ ] [tutorials-ecs-ecr-codedeploy](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html)
+## DevOps list
+- [ ] [monitor-use-of-a-shared-amazon-machine-image-across-multiple-aws-accounts](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/monitor-use-of-a-shared-amazon-machine-image-across-multiple-aws-accounts.html)
