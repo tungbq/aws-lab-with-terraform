@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "~> 4.16"
     }
   }
@@ -14,11 +14,11 @@ provider "aws" {
 }
 
 resource "aws_db_instance" "basic_rds_instance" {
-  engine = "mysql"
+  engine            = "mysql"
   allocated_storage = 20
-  instance_class = "db.t2.micro"
-  engine_version = "latest"
-  name = "my-rds-instance"
-  username = "root"
-  password = "password"
+  instance_class    = "db.t2.micro"
+  engine_version    = "5.7"
+  db_name           = "my_rds_instance"
+  username          = "root"
+  password          = "password"
 }
