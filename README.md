@@ -1,6 +1,6 @@
 # AWS labs with Terraform
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
@@ -68,6 +68,9 @@
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Atomicrypt"><img src="https://avatars.githubusercontent.com/u/85078088?v=4?s=100" width="100px;" alt="CJ"/><br /><sub><b>CJ</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=Atomicrypt" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/viktoriussuwandi"><img src="https://avatars.githubusercontent.com/u/68414300?v=4?s=100" width="100px;" alt="Viktorius Suwandi"/><br /><sub><b>Viktorius Suwandi</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=viktoriussuwandi" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.breakingpitt.es"><img src="https://avatars.githubusercontent.com/u/10740572?v=4?s=100" width="100px;" alt="Pedro Garcia Rodriguez"/><br /><sub><b>Pedro Garcia Rodriguez</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=BreakingPitt" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/vivekvr1"><img src="https://avatars.githubusercontent.com/u/99336923?v=4?s=100" width="100px;" alt="vivekvr"/><br /><sub><b>vivekvr</b></sub></a><br /><a href="https://github.com/tungbq/aws-lab-with-terraform/commits?author=vivekvr1" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
