@@ -22,8 +22,16 @@ resource "aws_s3_bucket" "demo_aws_codebuild_bucket_output" {
 }
 
 # Zip the code on the fly
-data "archive_file" "source" {
+data "archive_file" "source_demo_app" {
   type        = "zip"
   source_dir  = "./demo_app/"
   output_path = "./demo_app_zip/MessageUtil.zip"
+}
+
+# Uploading to S3
+resource "aws_s3_object" "file_upload" {
+  bucket      = aws_s3_bucket.demo_aws_codebuild_bucket_input.id
+  key         = "MessageUtil.zip"
+  source = data.archive_file.source_demo_app.output_path
+  etag = filemd5(data.archive_file.source_demo_app.output_path)
 }
