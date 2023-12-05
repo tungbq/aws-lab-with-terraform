@@ -33,5 +33,6 @@ resource "aws_s3_object" "file_upload" {
   bucket      = aws_s3_bucket.demo_aws_codebuild_bucket_input.id
   key         = "MessageUtil.zip"
   source = data.archive_file.source_demo_app.output_path
+  # Use the object etag to let Terraform recognize when the content has changed, regardless of the local filename or object path
   etag = filemd5(data.archive_file.source_demo_app.output_path)
 }
