@@ -16,8 +16,12 @@
 
 - Follow: https://developer.hashicorp.com/terraform/tutorials/aws-get-started
 
+## Terraform provider latest doc
+- See: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+
 ## New to AWS? Creating an AWS account
 - Follow: https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-creating.html
+
 
 ## Demo list ✔️
 
