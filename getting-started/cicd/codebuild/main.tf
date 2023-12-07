@@ -37,24 +37,28 @@ resource "aws_s3_object" "file_upload" {
   etag = filemd5(data.archive_file.source_demo_app.output_path)
 }
 
-
-resource "aws_codebuild_webhook" "example" {
-  project_name = aws_codebuild_project.demo_project.name
+# Authentication
+data "aws_secretsmanager_secret" "github_token" {
+  name = "GitHubToken" # Replace with your secret name in Secrets Manager
 }
 
-resource "github_repository_webhook" "example" {
-  active     = true
-  events     = ["push"]
-  name       = "example"
-  repository = github_repository.example.name
+# resource "aws_codebuild_webhook" "example" {
+#   project_name = aws_codebuild_project.demo_project.name
+# }
 
-  configuration {
-    url          = aws_codebuild_webhook.example.payload_url
-    secret       = aws_codebuild_webhook.example.secret
-    content_type = "json"
-    insecure_ssl = false
-  }
-}
+# resource "github_repository_webhook" "example" {
+#   active     = true
+#   events     = ["push"]
+#   name       = "example"
+#   repository = github_repository.example.name
+
+#   configuration {
+#     url          = aws_codebuild_webhook.example.payload_url
+#     secret       = aws_codebuild_webhook.example.secret
+#     content_type = "json"
+#     insecure_ssl = false
+#   }
+# }
 
 ### CODE BUILD PROJECT
 resource "aws_codebuild_project" "demo_project" {
@@ -81,8 +85,8 @@ resource "aws_codebuild_project" "demo_project" {
     image_pull_credentials_type = "CODEBUILD"
 
     environment_variable {
-      name  = "SOME_KEY1"
-      value = "SOME_VALUE1"
+      name  = "GITHUB_AUTH_TOKEN"
+      value = data.aws_secretsmanager_secret.github_token.secret_string
     }
   }
 
