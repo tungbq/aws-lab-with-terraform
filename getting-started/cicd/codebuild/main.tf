@@ -36,3 +36,63 @@ resource "aws_s3_object" "file_upload" {
   # Use the object etag to let Terraform recognize when the content has changed, regardless of the local filename or object path
   etag = filemd5(data.archive_file.source_demo_app.output_path)
 }
+
+
+resource "aws_codebuild_webhook" "example" {
+  project_name = aws_codebuild_project.demo_project.name
+}
+
+resource "github_repository_webhook" "example" {
+  active     = true
+  events     = ["push"]
+  name       = "example"
+  repository = github_repository.example.name
+
+  configuration {
+    url          = aws_codebuild_webhook.example.payload_url
+    secret       = aws_codebuild_webhook.example.secret
+    content_type = "json"
+    insecure_ssl = false
+  }
+}
+
+### CODE BUILD PROJECT
+resource "aws_codebuild_project" "demo_project" {
+  name           = "test-project-cache"
+  description    = "test_codebuild_project_cache"
+  build_timeout  = 5
+  queued_timeout = 5
+
+  service_role = aws_iam_role.example.arn
+
+  artifacts {
+    type = "NO_ARTIFACTS"
+  }
+
+  cache {
+    type  = "LOCAL"
+    modes = ["LOCAL_DOCKER_LAYER_CACHE", "LOCAL_SOURCE_CACHE"]
+  }
+
+  environment {
+    compute_type                = "BUILD_GENERAL1_SMALL"
+    image                       = "aws/codebuild/amazonlinux2-x86_64-standard:4.0"
+    type                        = "LINUX_CONTAINER"
+    image_pull_credentials_type = "CODEBUILD"
+
+    environment_variable {
+      name  = "SOME_KEY1"
+      value = "SOME_VALUE1"
+    }
+  }
+
+  source {
+    type            = "GITHUB"
+    location        = "https://github.com/tungbq/aws-cicd-source-example.git"
+    git_clone_depth = 1
+  }
+
+  tags = {
+    Environment = "Test"
+  }
+}
