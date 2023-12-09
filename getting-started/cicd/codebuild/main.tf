@@ -37,11 +37,6 @@ resource "aws_s3_object" "file_upload" {
   etag = filemd5(data.archive_file.source_demo_app.output_path)
 }
 
-# # Authentication
-# data "aws_secretsmanager_secret" "github_token" {
-#   name = "prod/github/tungb" # Replace with your secret name in Secrets Manager
-# }
-
 
 data "aws_iam_policy_document" "assume_role" {
   statement {
@@ -108,8 +103,8 @@ resource "aws_iam_role_policy" "demo_codebuild" {
 
 ### CODE BUILD PROJECT
 resource "aws_codebuild_project" "demo_project" {
-  name           = "test-project-cache"
-  description    = "test_codebuild_project_cache"
+  name           = "demo_project"
+  description    = "Demo project"
   build_timeout  = 5
   queued_timeout = 5
 
@@ -119,22 +114,11 @@ resource "aws_codebuild_project" "demo_project" {
     type = "NO_ARTIFACTS"
   }
 
-  cache {
-    type  = "LOCAL"
-    modes = ["LOCAL_DOCKER_LAYER_CACHE", "LOCAL_SOURCE_CACHE"]
-  }
-
   environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
     image                       = "aws/codebuild/amazonlinux2-x86_64-standard:4.0"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
-
-    environment_variable {
-      name  = "GITHUB_AUTH_TOKEN"
-      value = "prod/github/tungb"
-      type  = "SECRETS_MANAGER"
-    }
   }
 
   source {
@@ -142,6 +126,8 @@ resource "aws_codebuild_project" "demo_project" {
     location        = "https://github.com/tungbq/aws-cicd-source-example.git"
     git_clone_depth = 1
   }
+
+  source_version = "main"
 
   tags = {
     Environment = "Test"
