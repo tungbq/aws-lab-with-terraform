@@ -93,6 +93,15 @@ data "aws_iam_policy_document" "demo_codebuild" {
       "${aws_s3_bucket.demo_aws_codebuild_bucket_input.arn}/*",
     ]
   }
+
+  statement {
+    effect  = "Allow"
+    actions = ["s3:*"]
+    resources = [
+      aws_s3_bucket.demo_aws_codebuild_bucket_output.arn,
+      "${aws_s3_bucket.demo_aws_codebuild_bucket_output.arn}/*",
+    ]
+  }
 }
 
 resource "aws_iam_role_policy" "demo_codebuild" {
