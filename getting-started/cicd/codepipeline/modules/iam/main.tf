@@ -38,3 +38,28 @@ resource "aws_iam_instance_profile" "ec2_role_for_codebuild" {
   name = "ec2_role_for_codebuild"
   role = aws_iam_role.instance_role.name
 }
+
+# Code deploy
+resource "aws_iam_role" "codedeploy_role" {
+  name = "CodeDeployRole"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [{
+      Effect    = "Allow",
+      Principal = {
+        Service = "codedeploy.amazonaws.com"
+      },
+      Action    = "sts:AssumeRole"
+    }]
+  })
+}
+
+resource "aws_iam_policy_attachment" "codedeploy_managed_policy" {
+  name       = "CodeDeployManagedPolicyAttachment"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSCodeDeployRole"
+  roles      = [aws_iam_role.codedeploy_role.name]
+}
+
+output "code_deploy_role_name" {
+  value = aws_iam_role.codedeploy_role.name
+}

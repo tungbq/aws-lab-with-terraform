@@ -13,3 +13,9 @@ module "ec2_codedeploy" {
   source       = "./modules/ec2_codedeploy"
   profile_name = module.iam.profile_name
 }
+
+# Module: Codedeploy
+module "codedeploy" {
+  source                = "./modules/codedeploy"
+  code_deploy_role_name = module.iam.code_deploy_role_name
+}
