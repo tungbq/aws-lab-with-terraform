@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"  # Replace with your desired region
+  region = "us-east-1" # Replace with your desired region
 }
 
 # Create 2 S3 buckets
@@ -30,35 +30,81 @@ data "archive_file" "source_demo_app" {
 
 # Uploading to S3
 resource "aws_s3_object" "file_upload" {
-  bucket      = aws_s3_bucket.demo_aws_codebuild_bucket_input.id
-  key         = "MessageUtil.zip"
+  bucket = aws_s3_bucket.demo_aws_codebuild_bucket_input.id
+  key    = "MessageUtil.zip"
   source = data.archive_file.source_demo_app.output_path
   # Use the object etag to let Terraform recognize when the content has changed, regardless of the local filename or object path
   etag = filemd5(data.archive_file.source_demo_app.output_path)
 }
 
-# Authentication
-data "aws_secretsmanager_secret" "github_token" {
-  name = "GitHubToken" # Replace with your secret name in Secrets Manager
+# # Authentication
+# data "aws_secretsmanager_secret" "github_token" {
+#   name = "prod/github/tungb" # Replace with your secret name in Secrets Manager
+# }
+
+
+data "aws_iam_policy_document" "assume_role" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["codebuild.amazonaws.com"]
+    }
+
+    actions = ["sts:AssumeRole"]
+  }
 }
 
-# resource "aws_codebuild_webhook" "example" {
-#   project_name = aws_codebuild_project.demo_project.name
-# }
+resource "aws_iam_role" "demo_codebuild" {
+  name               = "demo_codebuild"
+  assume_role_policy = data.aws_iam_policy_document.assume_role.json
+}
 
-# resource "github_repository_webhook" "example" {
-#   active     = true
-#   events     = ["push"]
-#   name       = "example"
-#   repository = github_repository.example.name
+data "aws_iam_policy_document" "demo_codebuild" {
+  statement {
+    effect = "Allow"
 
-#   configuration {
-#     url          = aws_codebuild_webhook.example.payload_url
-#     secret       = aws_codebuild_webhook.example.secret
-#     content_type = "json"
-#     insecure_ssl = false
-#   }
-# }
+    actions = [
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "ec2:CreateNetworkInterface",
+      "ec2:DescribeDhcpOptions",
+      "ec2:DescribeNetworkInterfaces",
+      "ec2:DeleteNetworkInterface",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeSecurityGroups",
+      "ec2:DescribeVpcs",
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    effect  = "Allow"
+    actions = ["s3:*"]
+    resources = [
+      aws_s3_bucket.demo_aws_codebuild_bucket_input.arn,
+      "${aws_s3_bucket.demo_aws_codebuild_bucket_input.arn}/*",
+    ]
+  }
+}
+
+resource "aws_iam_role_policy" "demo_codebuild" {
+  role   = aws_iam_role.demo_codebuild.name
+  policy = data.aws_iam_policy_document.demo_codebuild.json
+}
+
 
 ### CODE BUILD PROJECT
 resource "aws_codebuild_project" "demo_project" {
@@ -67,7 +113,7 @@ resource "aws_codebuild_project" "demo_project" {
   build_timeout  = 5
   queued_timeout = 5
 
-  service_role = aws_iam_role.example.arn
+  service_role = aws_iam_role.demo_codebuild.arn
 
   artifacts {
     type = "NO_ARTIFACTS"
@@ -86,7 +132,8 @@ resource "aws_codebuild_project" "demo_project" {
 
     environment_variable {
       name  = "GITHUB_AUTH_TOKEN"
-      value = data.aws_secretsmanager_secret.github_token.secret_string
+      value = "prod/github/tungb"
+      type  = "SECRETS_MANAGER"
     }
   }
 
