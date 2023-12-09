@@ -13,7 +13,6 @@
 - See: https://aws.amazon.com/
 
 ## Terraform Getting Started - AWS
-
 - Follow: https://developer.hashicorp.com/terraform/tutorials/aws-get-started
 
 ## Terraform provider latest doc
@@ -22,6 +21,8 @@
 ## New to AWS? Creating an AWS account
 - Follow: https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-creating.html
 
+## Looking for a Terraform sample project with best practice
+- Check out: https://github.com/tungbq/terraform-sample-project
 
 ## Demo list ✔️
 
