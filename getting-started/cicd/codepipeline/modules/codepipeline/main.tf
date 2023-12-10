@@ -6,10 +6,10 @@ resource "aws_codepipeline" "codepipeline" {
     location = aws_s3_bucket.codepipeline_bucket.bucket
     type     = "S3"
 
-    encryption_key {
-      id   = data.aws_kms_alias.s3kmskey.arn
-      type = "KMS"
-    }
+    # encryption_key {
+    #   id   = data.aws_kms_alias.s3kmskey.arn
+    #   type = "KMS"
+    # }
   }
 
   stage {
@@ -25,7 +25,7 @@ resource "aws_codepipeline" "codepipeline" {
 
       configuration = {
         ConnectionArn    = aws_codestarconnections_connection.example.arn
-        FullRepositoryId = "my-organization/example"
+        FullRepositoryId = "tungbq/aws-codepipeline-demo"
         BranchName       = "main"
       }
     }
@@ -55,7 +55,7 @@ resource "aws_codestarconnections_connection" "example" {
 }
 
 resource "aws_s3_bucket" "codepipeline_bucket" {
-  bucket = "test-bucket"
+  bucket = "tungbq-demo-codepipeline-bucket"
 }
 
 resource "aws_s3_bucket_acl" "codepipeline_bucket_acl" {
@@ -123,6 +123,6 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
   policy = data.aws_iam_policy_document.codepipeline_policy.json
 }
 
-data "aws_kms_alias" "s3kmskey" {
-  name = "alias/myKmsKey"
-}
+# data "aws_kms_alias" "s3kmskey" {
+#   name = "alias/myKmsKey"
+# }
