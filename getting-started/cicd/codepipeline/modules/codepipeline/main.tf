@@ -64,7 +64,7 @@ resource "aws_codepipeline" "codepipeline" {
       version         = "1"
       input_artifacts = ["source_output"]
       configuration = {
-        ApplicationName     = "MyDemoApplication"
+        ApplicationName     = "aws_codedeploy_app_demo"
         DeploymentGroupName = "example-group"
       }
     }
