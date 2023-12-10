@@ -35,12 +35,12 @@ resource "aws_codepipeline" "codepipeline" {
     name = "Deploy"
 
     action {
-      name     = "MyDemoApplicationStage"
-      category = "Deploy"
-      owner    = "AWS"
-      provider = "CodeDeploy"
-      version  = "1"
-
+      name            = "MyDemoApplicationStage"
+      category        = "Deploy"
+      owner           = "AWS"
+      provider        = "CodeDeploy"
+      version         = "1"
+      input_artifacts = ["source_output"]
       configuration = {
         ApplicationName     = "MyDemoApplication"
         DeploymentGroupName = "example-group"
@@ -55,7 +55,8 @@ resource "aws_codestarconnections_connection" "example" {
 }
 
 resource "aws_s3_bucket" "codepipeline_bucket" {
-  bucket = "tungbq-demo-codepipeline-bucket"
+  bucket        = "tungbq-demo-codepipeline-bucket"
+  force_destroy = true
 }
 
 resource "aws_s3_bucket_acl" "codepipeline_bucket_acl" {
@@ -90,6 +91,7 @@ data "aws_iam_policy_document" "codepipeline_policy" {
       "s3:GetObjectVersion",
       "s3:GetBucketVersioning",
       "s3:PutObjectAcl",
+      "s3:PutBucketAcl",
       "s3:PutObject",
     ]
 
