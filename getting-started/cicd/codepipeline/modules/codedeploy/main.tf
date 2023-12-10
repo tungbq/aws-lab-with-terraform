@@ -3,12 +3,22 @@ resource "aws_codedeploy_app" "demo_codepipeline" {
   name             = "aws_codedeploy_app_demo"
 }
 
+resource "aws_codedeploy_deployment_config" "demo_codepipeline" {
+  deployment_config_name = "test-deployment-config"
+
+  minimum_healthy_hosts {
+    type  = "HOST_COUNT"
+    value = 1
+  }
+}
+
+
 resource "aws_codedeploy_deployment_group" "demo_codepipeline" {
   app_name              = aws_codedeploy_app.demo_codepipeline.name
   deployment_group_name = "example-group"
   service_role_arn      = var.service_role_arn
 
-  deployment_config_name = "CodeDeployDefault.OneAtaTime"
+  deployment_config_name = aws_codedeploy_deployment_config.demo_codepipeline.id
 
   deployment_style {
     deployment_option = "WITHOUT_TRAFFIC_CONTROL"
