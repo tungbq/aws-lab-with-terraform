@@ -19,3 +19,8 @@ module "codedeploy" {
   source           = "./modules/codedeploy"
   service_role_arn = module.iam.service_role_arn
 }
+
+# Module: Codepipeline
+module "codepipeline" {
+  source = "./modules/codepipeline"
+}
