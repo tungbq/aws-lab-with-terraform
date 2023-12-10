@@ -11,7 +11,7 @@ resource "aws_codedeploy_deployment_group" "demo_codepipeline" {
   deployment_config_name = "CodeDeployDefault.OneAtaTime"
 
   deployment_style {
-    deployment_option = "WITH_TRAFFIC_CONTROL"
+    deployment_option = "WITHOUT_TRAFFIC_CONTROL"
     deployment_type   = "IN_PLACE"
   }
 
