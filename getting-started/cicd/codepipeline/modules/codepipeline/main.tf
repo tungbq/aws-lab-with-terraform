@@ -1,3 +1,4 @@
+
 resource "aws_codepipeline" "codepipeline" {
   name     = "tf-test-pipeline"
   role_arn = aws_iam_role.codepipeline_role.arn
@@ -43,10 +44,10 @@ resource "aws_codepipeline" "codepipeline" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        Owner                = "tungbq"                  # Replace with your GitHub owner
-        Repo                 = "aws-codepipeline-demo"   # Replace with your GitHub repository
-        Branch               = "main"                    # Replace with your branch name
-        OAuthToken           = "YOUR_GITHUB_OAUTH_TOKEN" # Replace with your GitHub OAuth token
+        Owner                = "tungbq"                                                               # Replace with your GitHub owner
+        Repo                 = "aws-codepipeline-demo"                                                # Replace with your GitHub repository
+        Branch               = "main"                                                                 # Replace with your branch name
+        OAuthToken           = data.aws_secretsmanager_secret_version.my_secret_version.secret_string # Replace with your GitHub OAuth token
         PollForSourceChanges = true
       }
     }
@@ -74,6 +75,18 @@ resource "aws_codestarconnections_connection" "example" {
   name          = "example-connection"
   provider_type = "GitHub"
 }
+
+data "aws_secretsmanager_secret" "my_secret" {
+  name = "prod/github/tungb" # Replace with your secret name
+}
+
+data "aws_secretsmanager_secret_version" "my_secret_version" {
+  secret_id = data.aws_secretsmanager_secret.my_secret.id
+}
+
+# output "secret_value" {
+#   value = data.aws_secretsmanager_secret_version.my_secret.secret_string
+# }
 
 resource "aws_s3_bucket" "codepipeline_bucket" {
   bucket        = "tungbq-demo-codepipeline-bucket"
