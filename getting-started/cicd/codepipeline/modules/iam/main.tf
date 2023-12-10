@@ -1,6 +1,6 @@
 
 resource "aws_iam_role" "instance_role" {
-  name = "EC2InstanceRole"
+  name               = "EC2InstanceRole"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -45,11 +45,11 @@ resource "aws_iam_role" "codedeploy_role" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
-      Effect    = "Allow",
+      Effect = "Allow",
       Principal = {
         Service = "codedeploy.amazonaws.com"
       },
-      Action    = "sts:AssumeRole"
+      Action = "sts:AssumeRole"
     }]
   })
 }
@@ -60,6 +60,6 @@ resource "aws_iam_policy_attachment" "codedeploy_managed_policy" {
   roles      = [aws_iam_role.codedeploy_role.name]
 }
 
-output "code_deploy_role_name" {
-  value = aws_iam_role.codedeploy_role.name
+output "service_role_arn" {
+  value = aws_iam_role.codedeploy_role.arn
 }

@@ -16,6 +16,6 @@ module "ec2_codedeploy" {
 
 # Module: Codedeploy
 module "codedeploy" {
-  source                = "./modules/codedeploy"
-  code_deploy_role_name = module.iam.code_deploy_role_name
+  source           = "./modules/codedeploy"
+  service_role_arn = module.iam.service_role_arn
 }

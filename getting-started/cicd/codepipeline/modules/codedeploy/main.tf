@@ -1,43 +1,38 @@
-# resource "aws_codedeploy_app" "demo" {
-#   compute_platform = "Server"
-#   name             = "aws_codedeploy_app Server"
-# }
+resource "aws_codedeploy_app" "demo_codepipeline" {
+  compute_platform = "Server"
+  name             = "aws_codedeploy_app_demo"
+}
 
-# resource "aws_codedeploy_deployment_group" "example" {
-#   app_name              = aws_codedeploy_app.example.name
-#   deployment_group_name = "example-group"
-#   service_role_arn      = aws_iam_role.example.arn
+resource "aws_codedeploy_deployment_group" "demo_codepipeline" {
+  app_name              = aws_codedeploy_app.demo_codepipeline.name
+  deployment_group_name = "example-group"
+  service_role_arn      = var.service_role_arn
 
-#   ec2_tag_set {
-#     ec2_tag_filter {
-#       key   = "filterkey1"
-#       type  = "KEY_AND_VALUE"
-#       value = "filtervalue"
-#     }
+  deployment_config_name = "CodeDeployDefault.OneAtaTime"
 
-#     ec2_tag_filter {
-#       key   = "filterkey2"
-#       type  = "KEY_AND_VALUE"
-#       value = "filtervalue"
-#     }
-#   }
+  deployment_style {
+    deployment_option = "WITH_TRAFFIC_CONTROL"
+    deployment_type   = "IN_PLACE"
+  }
 
-#   trigger_configuration {
-#     trigger_events     = ["DeploymentFailure"]
-#     trigger_name       = "example-trigger"
-#     trigger_target_arn = aws_sns_topic.example.arn
-#   }
+  ec2_tag_set {
+    ec2_tag_filter {
+      type  = "KEY_AND_VALUE"
+      key   = "Name"
+      value = "MyCodePipelineDemo"
+    }
+  }
 
-#   auto_rollback_configuration {
-#     enabled = true
-#     events  = ["DEPLOYMENT_FAILURE"]
-#   }
+  # trigger_configuration {
+  #   trigger_events     = ["DeploymentFailure"]
+  #   trigger_name       = "example-trigger"
+  #   trigger_target_arn = aws_sns_topic.example.arn
+  # }
 
-#   alarm_configuration {
-#     alarms  = ["my-alarm-name"]
-#     enabled = true
-#   }
+  auto_rollback_configuration {
+    enabled = true
+    events  = ["DEPLOYMENT_FAILURE"]
+  }
 
-#   outdated_instances_strategy = "UPDATE"
-
-# }
+  outdated_instances_strategy = "UPDATE"
+}

@@ -1,4 +1,4 @@
-variable "code_deploy_role_name" {
-  description = "Name of the IAM profile"
+variable "service_role_arn" {
+  description = "ARN of the IAM profile"
   type        = string
 }
