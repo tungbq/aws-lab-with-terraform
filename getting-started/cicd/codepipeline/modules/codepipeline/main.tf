@@ -13,11 +13,30 @@ resource "aws_codepipeline" "codepipeline" {
     # }
   }
 
+  stage {
+    name = "Source"
+
+    action {
+      name             = "Source"
+      category         = "Source"
+      owner            = "AWS"
+      provider         = "CodeStarSourceConnection"
+      version          = "1"
+      output_artifacts = ["source_output"]
+
+      configuration = {
+        ConnectionArn    = aws_codestarconnections_connection.example.arn
+        FullRepositoryId = "tungbq/aws-codepipeline-demo"
+        BranchName       = "main"
+      }
+    }
+  }
+
   # stage {
   #   name = "Source"
 
   #   action {
-  #     name             = "Source"
+  #     name             = "SourceAction"
   #     category         = "Source"
   #     owner            = "AWS"
   #     provider         = "CodeStarSourceConnection"
@@ -25,33 +44,13 @@ resource "aws_codepipeline" "codepipeline" {
   #     output_artifacts = ["source_output"]
 
   #     configuration = {
-  #       ConnectionArn    = aws_codestarconnections_connection.example.arn
-  #       FullRepositoryId = "tungbq/aws-codepipeline-demo"
-  #       BranchName       = "main"
+  #       FullRepositoryId = "tungbq/aws-codepipeline-demo" # Replace with your GitHub repository
+  #       BranchName       = "main"                         # Replace with your branch name
+  #       # OAuthToken           = data.aws_secretsmanager_secret_version.my_secret_version.secret_string # Replace with your GitHub OAuth token
+  #       PollForSourceChanges = true
   #     }
   #   }
   # }
-
-  stage {
-    name = "Source"
-
-    action {
-      name             = "SourceAction"
-      category         = "Source"
-      owner            = "ThirdParty"
-      provider         = "GitHub"
-      version          = "1"
-      output_artifacts = ["source_output"]
-
-      configuration = {
-        Owner                = "tungbq"                                                               # Replace with your GitHub owner
-        Repo                 = "aws-codepipeline-demo"                                                # Replace with your GitHub repository
-        Branch               = "main"                                                                 # Replace with your branch name
-        OAuthToken           = data.aws_secretsmanager_secret_version.my_secret_version.secret_string # Replace with your GitHub OAuth token
-        PollForSourceChanges = true
-      }
-    }
-  }
 
   stage {
     name = "Deploy"
