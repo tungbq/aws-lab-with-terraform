@@ -4,13 +4,9 @@ resource "aws_codepipeline" "codepipeline" {
   role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {
-    location = aws_s3_bucket.codepipeline_bucket.bucket
+    location = var.s3_bucket_id
     type     = "S3"
 
-    # encryption_key {
-    #   id   = data.aws_kms_alias.s3kmskey.arn
-    #   type = "KMS"
-    # }
   }
 
   stage {
@@ -31,26 +27,6 @@ resource "aws_codepipeline" "codepipeline" {
       }
     }
   }
-
-  # stage {
-  #   name = "Source"
-
-  #   action {
-  #     name             = "SourceAction"
-  #     category         = "Source"
-  #     owner            = "AWS"
-  #     provider         = "CodeStarSourceConnection"
-  #     version          = "1"
-  #     output_artifacts = ["source_output"]
-
-  #     configuration = {
-  #       FullRepositoryId = "tungbq/aws-codepipeline-demo" # Replace with your GitHub repository
-  #       BranchName       = "main"                         # Replace with your branch name
-  #       # OAuthToken           = data.aws_secretsmanager_secret_version.my_secret_version.secret_string # Replace with your GitHub OAuth token
-  #       PollForSourceChanges = true
-  #     }
-  #   }
-  # }
 
   stage {
     name = "Deploy"
@@ -83,20 +59,6 @@ data "aws_secretsmanager_secret_version" "my_secret_version" {
   secret_id = data.aws_secretsmanager_secret.my_secret.id
 }
 
-# output "secret_value" {
-#   value = data.aws_secretsmanager_secret_version.my_secret.secret_string
-# }
-
-resource "aws_s3_bucket" "codepipeline_bucket" {
-  bucket        = "tungbq-demo-codepipeline-bucket"
-  force_destroy = true
-}
-
-resource "aws_s3_bucket_acl" "codepipeline_bucket_acl" {
-  bucket = aws_s3_bucket.codepipeline_bucket.id
-  acl    = "private"
-}
-
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"
@@ -123,14 +85,15 @@ data "aws_iam_policy_document" "codepipeline_policy" {
       "s3:GetObject",
       "s3:GetObjectVersion",
       "s3:GetBucketVersioning",
+      "s3:GetBucketAcl",
       "s3:PutObjectAcl",
       "s3:PutBucketAcl",
       "s3:PutObject",
     ]
 
     resources = [
-      aws_s3_bucket.codepipeline_bucket.arn,
-      "${aws_s3_bucket.codepipeline_bucket.arn}/*"
+      var.s3_bucket_arn,
+      "${var.s3_bucket_arn}/*"
     ]
   }
 
@@ -157,7 +120,3 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
   role   = aws_iam_role.codepipeline_role.id
   policy = data.aws_iam_policy_document.codepipeline_policy.json
 }
-
-# data "aws_kms_alias" "s3kmskey" {
-#   name = "alias/myKmsKey"
-# }
