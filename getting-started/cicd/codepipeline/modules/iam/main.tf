@@ -1,4 +1,3 @@
-
 resource "aws_iam_role" "instance_role" {
   name               = "EC2InstanceRole"
   assume_role_policy = <<EOF
@@ -35,7 +34,7 @@ output "profile_name" {
 }
 
 resource "aws_iam_instance_profile" "ec2_role_for_codebuild" {
-  name = "ec2_role_for_codebuild"
+  name = var.ec2_role_for_codebuild_name
   role = aws_iam_role.instance_role.name
 }
 
