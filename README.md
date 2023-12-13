@@ -31,6 +31,7 @@
 | getting-started | EC2 Create Simple Instance |[ec2/create-simple-instance](./getting-started/ec2/create-simple-instance)| ✔️ Done |
 | getting-started | S3 Create Simple Bucket |[s3/create-new-bucket](./getting-started/s3/create-new-bucket)| ✔️ Done |
 | getting-started | local-exec/single-command | [getting-started/local-exec/single-command](./getting-started/local-exec/single-command) | ✔️ Done |
+| getting-started | AWS Codebuild getting started |[cicd/codebuild](./getting-started/cicd/codebuild)| ✔️ Done |
 | tutorial | S3 Static Website |[s3-static-website](./tutorial/s3-static-website)| ✔️ Done |
 | tutorial | Serverless Basic Application |[serverless-basic-application](./tutorial/serverless-basic-application)| ✔️ Done |
 | tutorial | WordPress Instance With Amazon Lightsail |[wordPress-instance-with-amazon-lightsail](./tutorial/wordPress-instance-with-amazon-lightsail)|✔️Done |
