@@ -6,7 +6,6 @@ resource "aws_codepipeline" "codepipeline" {
   artifact_store {
     location = var.s3_bucket_id
     type     = "S3"
-
   }
 
   stage {
@@ -32,7 +31,7 @@ resource "aws_codepipeline" "codepipeline" {
     name = "Deploy"
 
     action {
-      name            = "Application Deployment"
+      name            = "ApplicationDeployment"
       category        = "Deploy"
       owner           = "AWS"
       provider        = "CodeDeploy"
@@ -40,7 +39,7 @@ resource "aws_codepipeline" "codepipeline" {
       input_artifacts = ["source_output"]
       configuration = {
         ApplicationName     = "aws_codedeploy_app_demo"
-        DeploymentGroupName = "example-group"
+        DeploymentGroupName = var.deployment_group_name
       }
     }
   }
@@ -65,7 +64,7 @@ data "aws_iam_policy_document" "assume_role" {
 }
 
 resource "aws_iam_role" "codepipeline_role" {
-  name               = "test-role"
+  name               = var.aws_iam_role_name
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
