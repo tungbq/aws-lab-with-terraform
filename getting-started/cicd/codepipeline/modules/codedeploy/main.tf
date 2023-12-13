@@ -1,10 +1,10 @@
 resource "aws_codedeploy_app" "demo_codepipeline" {
   compute_platform = "Server"
-  name             = "aws_codedeploy_app_demo"
+  name             = var.codedeploy_app_name
 }
 
 resource "aws_codedeploy_deployment_config" "demo_codepipeline" {
-  deployment_config_name = "test-deployment-config"
+  deployment_config_name = var.deployment_config_name
 
   minimum_healthy_hosts {
     type  = "HOST_COUNT"
@@ -15,7 +15,7 @@ resource "aws_codedeploy_deployment_config" "demo_codepipeline" {
 
 resource "aws_codedeploy_deployment_group" "demo_codepipeline" {
   app_name              = aws_codedeploy_app.demo_codepipeline.name
-  deployment_group_name = "example-group"
+  deployment_group_name = var.deployment_group_name
   service_role_arn      = var.service_role_arn
 
   deployment_config_name = aws_codedeploy_deployment_config.demo_codepipeline.id
@@ -29,15 +29,9 @@ resource "aws_codedeploy_deployment_group" "demo_codepipeline" {
     ec2_tag_filter {
       type  = "KEY_AND_VALUE"
       key   = "Name"
-      value = "MyCodePipelineDemo"
+      value = var.ec2_tag_filter_name
     }
   }
-
-  # trigger_configuration {
-  #   trigger_events     = ["DeploymentFailure"]
-  #   trigger_name       = "example-trigger"
-  #   trigger_target_arn = aws_sns_topic.example.arn
-  # }
 
   auto_rollback_configuration {
     enabled = true
