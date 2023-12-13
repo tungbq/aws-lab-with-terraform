@@ -1,6 +1,6 @@
 
 resource "aws_codepipeline" "codepipeline" {
-  name     = "tf-test-pipeline"
+  name     = var.codepipeline_name
   role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {
@@ -21,8 +21,8 @@ resource "aws_codepipeline" "codepipeline" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        ConnectionArn    = aws_codestarconnections_connection.example.arn
-        FullRepositoryId = "tungbq/aws-codepipeline-demo"
+        ConnectionArn    = aws_codestarconnections_connection.demo_codepipeline.arn
+        FullRepositoryId = var.github_repo_name
         BranchName       = "main"
       }
     }
@@ -32,7 +32,7 @@ resource "aws_codepipeline" "codepipeline" {
     name = "Deploy"
 
     action {
-      name            = "MyDemoApplicationStage"
+      name            = "Application Deployment"
       category        = "Deploy"
       owner           = "AWS"
       provider        = "CodeDeploy"
@@ -46,17 +46,9 @@ resource "aws_codepipeline" "codepipeline" {
   }
 }
 
-resource "aws_codestarconnections_connection" "example" {
-  name          = "example-connection"
+resource "aws_codestarconnections_connection" "demo_codepipeline" {
+  name          = var.aws_codestarconnections_connection_name
   provider_type = "GitHub"
-}
-
-data "aws_secretsmanager_secret" "my_secret" {
-  name = "prod/github/tungb" # Replace with your secret name
-}
-
-data "aws_secretsmanager_secret_version" "my_secret_version" {
-  secret_id = data.aws_secretsmanager_secret.my_secret.id
 }
 
 data "aws_iam_policy_document" "assume_role" {
@@ -100,7 +92,7 @@ data "aws_iam_policy_document" "codepipeline_policy" {
   statement {
     effect    = "Allow"
     actions   = ["codestar-connections:UseConnection"]
-    resources = [aws_codestarconnections_connection.example.arn]
+    resources = [aws_codestarconnections_connection.demo_codepipeline.arn]
   }
 
   statement {
