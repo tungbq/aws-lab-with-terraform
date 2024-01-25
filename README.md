@@ -1,7 +1,7 @@
-<h1 align="center">AWS Labs With Terraform</h1>
+<h1 align="center">AWS labs with Terraform  🚀 </h1>
 
 <p align="center">Collection of Terraform code for AWS labs 💝</p>
-<p align="center">With many basic and advanced examples, hands-on, guides for all enginerring levels</p>
+<p align="center">Dive into a rich assortment featuring both fundamental and advanced examples, coupled with engaging hands-on experiences and guides suitable for engineers at all levels of expertise. 💡✨</p>
 
 <p align="center">
   <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
