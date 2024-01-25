@@ -1,3 +1,17 @@
+<h1 align="center">AWS Labs With Terraform</h1>
+
+<p align="center">Collection of Terraform code for AWS labs 💝</p>
+<p align="center">With many basic and advanced examples, hands-on, guides for all enginerring levels</p>
+
+<p align="center">
+  <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+  <a href="#contributors-" target="_blank"><img alt="👪 All Contributors: 15" src="https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square" /></a>
+  <!-- ALL-CONTRIBUTORS-BADGE:END -->
+  <a href="https://img.shields.io/github/last-commit/tungbq/aws-lab-with-terraform/main"><img alt="last commit" src="https://img.shields.io/github/last-commit/tungbq/aws-lab-with-terraform/main" /></a>
+  <a href="https://github.com/tungbq/aws-lab-with-terraform/releases"><img alt="aws-lab-with-terraform release" src="https://img.shields.io/github/release/tungbq/aws-lab-with-terraform.svg" /></a>
+</p>
+
+
 # AWS labs with Terraform
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
