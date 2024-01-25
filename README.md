@@ -11,13 +11,6 @@
   <a href="https://github.com/tungbq/aws-lab-with-terraform/releases"><img alt="aws-lab-with-terraform release" src="https://img.shields.io/github/release/tungbq/aws-lab-with-terraform.svg" /></a>
 </p>
 
-
-# AWS labs with Terraform
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-
-
 ## How to install Terraform
 
 - See: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
