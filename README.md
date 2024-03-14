@@ -35,20 +35,22 @@
 
 - Check out: https://github.com/tungbq/terraform-sample-project
 
-## Demo list ✔️
+## Labs
 
-| Category        | Name                                     | URL                                                            | Status |
-| :-------------- | :--------------------------------------- | :------------------------------------------------------------- | :----- |
-| getting-started | EC2 Create Simple Instance               | [Explore](./getting-started/ec2/create-simple-instance)        | ✔️ Done |
-| getting-started | S3 Create Simple Bucket                  | [Explore](./getting-started/s3/create-new-bucket)              | ✔️ Done |
-| getting-started | Execute command on localhost             | [Explore](./getting-started/local-exec/single-command)         | ✔️ Done |
-| getting-started | AWS Codebuild demo                       | [Explore](./getting-started/cicd/codebuild)                    | ✔️ Done |
-| getting-started | AWS CodePipeline demo                    | [Explore](./getting-started/cicd/codepipeline)                 | ✔️ Done |
-| tutorial        | S3 Static Website                        | [Explore](./tutorial/s3-static-website)                        | ✔️ Done |
-| tutorial        | Serverless Basic Application             | [Explore](./tutorial/serverless-basic-application)             | ✔️ Done |
-| tutorial        | WordPress Instance With Amazon Lightsail | [Explore](./tutorial/wordPress-instance-with-amazon-lightsail) | ✔️Done  |
-| workshop        | AWS 3 tier web application               | [Explore](./workshop/aws-3-tier-web)                           | ✔️ Done |
-| self-hosted     | Focalboard App Basic on AWS EC2 Ubuntu   | [Explore](./selfhosted/focalboard/simple-focalboard)           | ✔️ Done |
+| ID   | Category    | Name                                     | URL                                                            | Status |
+| :--- | :---------- | :--------------------------------------- | :------------------------------------------------------------- | :----- |
+| 01   | get-started | EC2 Create Simple Instance               | [Explore](./getting-started/ec2/create-simple-instance)        | ✔️ Done |
+| 02   | get-started | S3 Create Simple Bucket                  | [Explore](./getting-started/s3/create-new-bucket)              | ✔️ Done |
+| 03   | get-started | Execute command on localhost             | [Explore](./getting-started/local-exec/single-command)         | ✔️ Done |
+| 04   | get-started | AWS Codebuild demo                       | [Explore](./getting-started/cicd/codebuild)                    | ✔️ Done |
+| 05   | get-started | AWS CodePipeline demo                    | [Explore](./getting-started/cicd/codepipeline)                 | ✔️ Done |
+| 06   | tutorial    | S3 Static Website                        | [Explore](./tutorial/s3-static-website)                        | ✔️ Done |
+| 07   | tutorial    | Serverless Basic Application             | [Explore](./tutorial/serverless-basic-application)             | ✔️ Done |
+| 08   | tutorial    | WordPress Instance With Amazon Lightsail | [Explore](./tutorial/wordPress-instance-with-amazon-lightsail) | ✔️Done  |
+| 09   | workshop    | AWS 3 tier web application               | [Explore](./workshop/aws-3-tier-web)                           | ✔️ Done |
+| 10   | self-hosted | Focalboard App Basic on AWS EC2 Ubuntu   | [Explore](./selfhosted/focalboard/simple-focalboard)           | ✔️ Done |
+
+And more upcoming content...⏩ you can follow this repository to get more up-to-dated content ⭐
 
 ## Wish list ✈️
 
