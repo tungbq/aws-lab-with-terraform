@@ -15,41 +15,47 @@
 
 - See: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
-
 ## Getting started with AWS
+
 - See: https://aws.amazon.com/
 
 ## Terraform Getting Started - AWS
+
 - Follow: https://developer.hashicorp.com/terraform/tutorials/aws-get-started
 
 ## Terraform provider latest doc
+
 - See: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 
 ## New to AWS? Creating an AWS account
+
 - Follow: https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-creating.html
 
 ## Looking for a Terraform sample project with best practice
+
 - Check out: https://github.com/tungbq/terraform-sample-project
 
 ## Demo list ✔️
 
-| Category | Name | URL | Status |
-|:---|:---|:---|:---|
-| getting-started | EC2 Create Simple Instance |[ec2/create-simple-instance](./getting-started/ec2/create-simple-instance)| ✔️ Done |
-| getting-started | S3 Create Simple Bucket |[s3/create-new-bucket](./getting-started/s3/create-new-bucket)| ✔️ Done |
-| getting-started | local-exec/single-command | [getting-started/local-exec/single-command](./getting-started/local-exec/single-command) | ✔️ Done |
-| getting-started | AWS Codebuild demo |[cicd/codebuild](./getting-started/cicd/codebuild)| ✔️ Done |
-| getting-started | AWS CodePipeline demo |[cicd/codepipeline](./getting-started/cicd/codepipeline)| ✔️ Done |
-| tutorial | S3 Static Website |[s3-static-website](./tutorial/s3-static-website)| ✔️ Done |
-| tutorial | Serverless Basic Application |[serverless-basic-application](./tutorial/serverless-basic-application)| ✔️ Done |
-| tutorial | WordPress Instance With Amazon Lightsail |[wordPress-instance-with-amazon-lightsail](./tutorial/wordPress-instance-with-amazon-lightsail)|✔️Done |
-| workshop | AWS 3 tier web application |[aws-3-tier-web](./workshop/aws-3-tier-web)| ✔️ Done |
-| selfhosted | Focalboard App Basic on AWS EC2 Ubuntu |[focalboard/simple-focalboard](./selfhosted/focalboard/simple-focalboard)| ✔️ Done |
+| Category        | Name                                     | URL                                                            | Status |
+| :-------------- | :--------------------------------------- | :------------------------------------------------------------- | :----- |
+| getting-started | EC2 Create Simple Instance               | [Explore](./getting-started/ec2/create-simple-instance)        | ✔️ Done |
+| getting-started | S3 Create Simple Bucket                  | [Explore](./getting-started/s3/create-new-bucket)              | ✔️ Done |
+| getting-started | Execute command on localhost             | [Explore](./getting-started/local-exec/single-command)         | ✔️ Done |
+| getting-started | AWS Codebuild demo                       | [Explore](./getting-started/cicd/codebuild)                    | ✔️ Done |
+| getting-started | AWS CodePipeline demo                    | [Explore](./getting-started/cicd/codepipeline)                 | ✔️ Done |
+| tutorial        | S3 Static Website                        | [Explore](./tutorial/s3-static-website)                        | ✔️ Done |
+| tutorial        | Serverless Basic Application             | [Explore](./tutorial/serverless-basic-application)             | ✔️ Done |
+| tutorial        | WordPress Instance With Amazon Lightsail | [Explore](./tutorial/wordPress-instance-with-amazon-lightsail) | ✔️Done  |
+| workshop        | AWS 3 tier web application               | [Explore](./workshop/aws-3-tier-web)                           | ✔️ Done |
+| self-hosted     | Focalboard App Basic on AWS EC2 Ubuntu   | [Explore](./selfhosted/focalboard/simple-focalboard)           | ✔️ Done |
 
 ## Wish list ✈️
+
 - Checkout our current wish list at [WISHLIST.md](./WISHLIST.md)
 
 ## Contributing
+
 - See: [CONTRIBUTING.md](https://github.com/tungbq/aws-lab-with-terraform/blob/main/CONTRIBUTING.md). Thanks! 💖
 - Looking for the issue to work on? Check the list of our open [good first issue](https://github.com/tungbq/aws-lab-with-terraform/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 - If you find this repository helpful, kindly consider showing your appreciation by giving it a star ⭐. Thanks! 💖
