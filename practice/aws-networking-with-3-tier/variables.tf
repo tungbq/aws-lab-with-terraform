@@ -30,10 +30,12 @@ variable "app_name" {
   default     = "myapp"
 }
 
+# Check AMI at: https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#AMICatalog
+## Ubuntu 22.04: ami-0a0e5d9c7acc336f1
 variable "ami_id" {
   description = "AMI ID"
   type        = string
-  default     = "ami-12345678"
+  default     = "ami-0a0e5d9c7acc336f1"
 }
 
 variable "instance_type" {
