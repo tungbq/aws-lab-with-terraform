@@ -1,63 +1,113 @@
 # nacl.tf
 
-resource "aws_network_acl" "public_nacl" {
+# NACL for the Web Tier
+resource "aws_network_acl" "web_nacl" {
   vpc_id = aws_vpc.custom_vpc.id
 
+  # Outbound rules (allow all outbound traffic)
   egress {
-    protocol   = "-1"
     rule_no    = 100
+    protocol   = "-1"
     action     = "allow"
     cidr_block = "0.0.0.0/0"
     from_port  = 0
     to_port    = 0
+  }
+
+  # Inbound rules (allow HTTP and HTTPS traffic)
+  ingress {
+    rule_no    = 100
+    protocol   = "6"
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 80
+    to_port    = 80
   }
 
   ingress {
-    protocol   = "-1"
-    rule_no    = 100
+    rule_no    = 110
+    protocol   = "6"
     action     = "allow"
     cidr_block = "0.0.0.0/0"
-    from_port  = 0
-    to_port    = 0
+    from_port  = 443
+    to_port    = 443
   }
 
   tags = {
-    Name = "${var.app_name}-public-nacl"
+    Name = "${var.app_name}-web-nacl"
   }
 }
 
-resource "aws_network_acl" "private_nacl" {
+# NACL for the App Tier
+resource "aws_network_acl" "app_nacl" {
   vpc_id = aws_vpc.custom_vpc.id
 
+  # Outbound rules (allow all outbound traffic)
   egress {
-    protocol   = "-1"
     rule_no    = 100
+    protocol   = "-1"
     action     = "allow"
     cidr_block = "0.0.0.0/0"
     from_port  = 0
     to_port    = 0
   }
 
+  # Inbound rules (allow traffic on port 8080 from the web subnet)
   ingress {
-    protocol   = "-1"
     rule_no    = 100
+    protocol   = "6"
     action     = "allow"
-    cidr_block = var.vpc_cidr
+    cidr_block = aws_subnet.public_subnet.cidr_block
+    from_port  = 8080
+    to_port    = 8080
+  }
+
+  tags = {
+    Name = "${var.app_name}-app-nacl"
+  }
+}
+
+# NACL for the Database Tier
+resource "aws_network_acl" "db_nacl" {
+  vpc_id = aws_vpc.custom_vpc.id
+
+  # Outbound rules (allow all outbound traffic)
+  egress {
+    rule_no    = 100
+    protocol   = "-1"
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
     from_port  = 0
     to_port    = 0
   }
 
+  # Inbound rules (allow traffic on port 5432 from the app subnet)
+  ingress {
+    rule_no    = 100
+    protocol   = "6"
+    action     = "allow"
+    cidr_block = aws_subnet.private_subnet.cidr_block
+    from_port  = 5432
+    to_port    = 5432
+  }
+
   tags = {
-    Name = "${var.app_name}-private-nacl"
+    Name = "${var.app_name}-db-nacl"
   }
 }
 
-resource "aws_network_acl_association" "public_nacl_assoc" {
-  subnet_id = aws_subnet.public_subnet.id
-  network_acl_id = aws_network_acl.public_nacl.id
+# Associating NACLs with Subnets
+resource "aws_network_acl_association" "web_nacl_assoc" {
+  subnet_id     = aws_subnet.public_subnet.id
+  network_acl_id = aws_network_acl.web_nacl.id
 }
 
-resource "aws_network_acl_association" "private_nacl_assoc" {
-  subnet_id = aws_subnet.private_subnet.id
-  network_acl_id = aws_network_acl.private_nacl.id
+resource "aws_network_acl_association" "app_nacl_assoc" {
+  subnet_id     = aws_subnet.private_subnet.id
+  network_acl_id = aws_network_acl.app_nacl.id
+}
+
+resource "aws_network_acl_association" "db_nacl_assoc" {
+  subnet_id     = aws_subnet.private_subnet.id
+  network_acl_id = aws_network_acl.db_nacl.id
 }
