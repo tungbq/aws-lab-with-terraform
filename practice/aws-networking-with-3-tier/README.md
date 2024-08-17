@@ -32,5 +32,14 @@ terraform init
 ```
 
 ## TF plan out
+```bash
+terraform plan -out="tfplan.out"
+```
 
 ## TF apply
+```bash
+terraform apply "tfplan.out"
+```
+
+## Troubleshooting
+- https://stackoverflow.com/questions/31569910/terraform-throws-groupname-cannot-be-used-with-the-parameter-subnet-or-vpc-se
