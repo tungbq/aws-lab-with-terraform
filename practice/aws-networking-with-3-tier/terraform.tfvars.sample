@@ -1,0 +1,11 @@
+# terraform.tfvars
+
+aws_region          = "us-east-1"
+vpc_cidr            = "10.0.0.0/16"
+public_subnet_cidr  = "10.0.1.0/24"
+private_subnet_cidr = "10.0.2.0/24"
+app_name            = "myapp"
+# Check AMI at: https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#AMICatalog
+## Ubuntu 22.04: ami-0a0e5d9c7acc336f1
+ami_id              = "ami-0a0e5d9c7acc336f1"
+instance_type       = "t2.micro"
